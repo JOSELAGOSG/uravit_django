@@ -9,5 +9,5 @@ urlpatterns = [
 
 
 
-    path('juicio/<int:juicio_pk>/create-responsable/', views.ResponsableCreateView.as_view(), name='responsable-create'),
+    path('victima/<int:pk>/', views.VictimaDetailView.as_view(), name='victima-detail'),
 ]

@@ -6,7 +6,7 @@ from django.urls import reverse
 class Juicio(models.Model):
     ruc = models.CharField(max_length=25)
     auto_apertura = models.CharField(max_length=200, null=True)
-    fecha_juicio_oral = models.DateField(null=True)
+    fecha_juicio_oral = models.DateTimeField()
     fiscal = models.CharField(max_length=30, null=True)
 
 
@@ -16,9 +16,8 @@ class Juicio(models.Model):
     def get_absolute_url(self):
         return reverse('trials:juicio-detail', args=[self.pk])
 
-    def get_create_responsable_url(self):
-        return reverse('trials:responsable-create', args=[self.pk])
-
+    
+'''
 class Responsable(models.Model):
     TIPOS_CHOICES = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
                      ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
@@ -28,13 +27,16 @@ class Responsable(models.Model):
 
     def __str__(self):
         return f'Responsable: {self.nombre} | {self.id_juicio}'
+'''
+
+
 
 class Persona(models.Model):
     nombre = models.CharField(max_length=30)
     rut = models.CharField(max_length=30)
     direccion = models.CharField (max_length=200)
-    correo = models.EmailField()
-    telefono = models.CharField(max_length=50)  # Arreglar para los constraints 
+    correo = models.EmailField(null=True)
+    telefono = models.CharField(max_length=50, null=True)  # Arreglar para los constraints 
     bool_esta_notificada = models.BooleanField(default=False)
     observaciones = models.TextField(null=True, blank=True)
 
@@ -61,6 +63,9 @@ class Victima(Persona):
     
     def __str__(self):
         return f'Víctima: {self.nombre} | {self.id_juicio}'
+    
+    def get_absolute_url(self):
+        return reverse('trials:victima-detail', args=[self.pk])
 
 class Perito(Persona):
     id_juicio = models.ForeignKey(Juicio, related_name="peritos", on_delete=models.CASCADE )

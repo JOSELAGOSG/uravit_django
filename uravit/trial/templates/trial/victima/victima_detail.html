@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Victima {{ victima.nombre }}{% endblock %}
+
+{% block content %}
+<h1>Victima: {{ victima.nombre }}</h1>
+<li>{{victima.id_juicio}}</li>
+<li>{{victima.edad}}</li>
+<li>{{victima.bool_pauta_lista}}</li>
+<li>{{victima.link_pauta_necesidades}}</li>
+
+
+{% endblock %}

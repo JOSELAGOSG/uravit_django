@@ -1,0 +1,31 @@
+auto apertura va a ser URL
+
+fecha de juicio tiene que ser fecha y hora
+
+
+correo y telefono de persona dejar con null= True
+
+
+
+se necesita fecha de notificacion de testigos, victima y perito
+
+
+
+bool esta lista la pauta y esta notificada ponerlo con input (si, no) envez de checkbox
+
+
+
+
+Agregar Bool Gestionado (Listo) en persona y ponerlo en Detalle Juicio
+
+
+"Boton designar tarea para Equipos"
+
+
+
+Refactorizar tema Responsables. Cada responsable sera asociado a una Tarea (Crear tema tareas)
+
+
+
+
+Equipo Coordinador del Programa

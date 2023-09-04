@@ -4,53 +4,44 @@
 
 {% block content %}
 <h1>Juicio RUC: {{ juicio.ruc }}</h1>
-  <ul> 
-      <li>Auto apertura: {{ juicio.auto_apertura }}</li>
-      <li>Fecha Juicio Oral: {{ juicio.fecha_juicio_oral }}</li> 
-      <li>Fiscal: {{ juicio.fiscal }}</li>
-  </ul>
+<div class="card text-center">  
+  <div class="card-body">
+   
+    <li>Auto apertura: {{ juicio.auto_apertura }}</li>
+    <li>Fecha Juicio Oral: {{ juicio.fecha_juicio_oral }}</li> 
+    <li>Fiscal: {{ juicio.fiscal }}</li>
+  
 
-  <h3>Responsables     <a href="{{ juicio.get_create_responsable_url }}">agregar responsable</a></h3>
-  <ul>
-    <li>Equipo URAVIT:
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </li>
-    <li>Equipo Especial de Juicios:
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </li>
-    <li>Equipo Fiscal:
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </li>
-    <li>Equipo UGI:
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </li>
-  </ul>
   <h3>Víctimas</h3>
   <ul>
-    <li></li>
+    {% for victima in juicio.victimas.all %}
+    <li><a href="{{ victima.get_absolute_url }}">Víctima: {{ victima.nombre }}</a></li>
+    {% empty %}
+    <li>
+      No hay víctimas aún
+    </li>
+    {% endfor %}
   </ul>
   <h3>Testigos</h3>
   <ul>
-    <li></li>
+    {% for testigo in juicio.testigos.all %}
+    <li>Testigo: {{ testigo.nombre }}</li>
+    {% empty %}
+    <li>
+      No hay testigos aún
+    </li>
+    {% endfor %}
   </ul>
   <h3>Peritos</h3>
   <ul>
-    <li></li>
+    {% for perito in juicio.peritos.all %}
+    <li>Perito: {{ perito.nombre }}</li>
+    {% empty %}
+    <li>
+      No hay peritos aún
+    </li>
+    {% endfor %}
   </ul>
+</div>
+</div>
 {% endblock %}

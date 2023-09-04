@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Juicio, Testigo, Victima, Responsable, Perito, PautaNecesidadesTestigo, PautaNecesidadesVictima
+from .models import Juicio, Testigo, Victima, Perito, PautaNecesidadesTestigo, PautaNecesidadesVictima
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView, DetailView
 # Create your views here.
@@ -29,11 +29,7 @@ class JuicioUpdateView(UpdateView):
 
 
 
-
-
-
-
-
-class ResponsableCreateView(CreateView):
-    template_name = ''
-    pass
+class VictimaDetailView(DetailView):
+    template_name = 'trial/victima/victima_detail.html'
+    model = Victima
+    context_object_name = 'victima'

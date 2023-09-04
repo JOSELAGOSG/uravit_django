@@ -5,7 +5,6 @@ from . import models
 admin.site.register(models.Juicio)
 admin.site.register(models.Victima)
 admin.site.register(models.Testigo)
-admin.site.register(models.Responsable)
 admin.site.register(models.Perito)
 admin.site.register(models.PautaNecesidadesVictima)
 admin.site.register(models.PautaNecesidadesTestigo)
