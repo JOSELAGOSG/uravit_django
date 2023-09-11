@@ -90,3 +90,70 @@ class PautaNecesidadesVictima(models.Model):
 
     def __str__(self):
         return f'Pauta Necesidades de: {self.id_victima}'
+    
+
+# APOYOS
+ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
+EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
+                     ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
+
+class ApoyoVictimaAbstracto(models.Model):
+    victima = models.ForeignKey(Victima, related_name='apoyos', on_delete=models.CASCADE)
+    estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
+    equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
+
+    class Meta:
+        abstract = True
+
+class ApoyoTestigoAbstracto(models.Model):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos', on_delete=models.CASCADE)
+    estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
+    equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
+
+    class Meta:
+        abstract = True
+
+class ApoyoTrasladoAbstracto(models.Model):
+    TIPOS_CHOICES = [('lo', 'Local'), ('or', 'Otra Región')]
+    VEHICULOS_CHOICES = [('tx', 'Taxi'), ('vi', 'Vehículo Institucional'), ('bs','Bus'), ('av', 'Avión')]
+    tipo = models.CharField(choices=TIPOS_CHOICES, max_length=2) #Si es traslado local o desde otra region
+    vehiculo = models.CharField(choices=VEHICULOS_CHOICES, max_length=2)
+    
+    class Meta:
+        abstract = True
+
+class ApoyoVictimaTraslado(ApoyoVictimaAbstracto, ApoyoTrasladoAbstracto):
+    pass
+
+'''
+class ApoyoVictimaEstadia(models.Model):
+    pass
+
+class ApoyoVictimaAlimentacion(models.Model):
+    pass
+class ApoyoVictimaAsistenciaMedica(models.Model):
+    pass
+class ApoyoVictimaProteccionEspecial(models.Model):
+    pass
+class ApoyoVictimaTraductor(models.Model):
+    pass
+class ApoyoVictimaConsular(models.Model):
+    pass
+
+class ApoyoTestigoTraslado(models.Model):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_traslado', on_delete=models.CASCADE)
+
+class ApoyoTestigoEstadia(models.Model):
+    pass
+
+class ApoyoTestigoAlimentacion(models.Model):
+    pass
+class ApoyoTestigoAsistenciaMedica(models.Model):
+    pass
+class ApoyoTestigoProteccionEspecial(models.Model):
+    pass
+class ApoyoTestigoTraductor(models.Model):
+    pass
+class ApoyoTestigoConsular(models.Model):
+    pass
+'''
