@@ -96,17 +96,8 @@ class PautaNecesidadesVictima(models.Model):
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
 EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
                      ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
-
-class ApoyoVictimaAbstracto(models.Model):
-    victima = models.ForeignKey(Victima, related_name='apoyos', on_delete=models.CASCADE)
-    estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
-    equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
-
-    class Meta:
-        abstract = True
-
-class ApoyoTestigoAbstracto(models.Model):
-    testigo = models.ForeignKey(Testigo, related_name='apoyos', on_delete=models.CASCADE)
+# MODELOS ABSTRACTOS
+class ApoyoAbstracto(models.Model):
     estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
     equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
 
@@ -122,8 +113,94 @@ class ApoyoTrasladoAbstracto(models.Model):
     class Meta:
         abstract = True
 
-class ApoyoVictimaTraslado(ApoyoVictimaAbstracto, ApoyoTrasladoAbstracto):
-    pass
+class ApoyoEstadiaAbstracto(models.Model):
+    con_alimentacion = models.BooleanField(default=False)
+    descripcion = models.TextField()
+    class Meta:
+        abstract = True
+
+
+class ApoyoAlimentacionAbstracto(models.Model):
+    descripcion = models.TextField()
+
+    class Meta:
+        abstract = True
+
+class ApoyoAsistenciaMedicaAbstracto(models.Model):
+    TIPOS_CHOICES = [('pq', 'Psiquiátrica'), ('pc', 'Psicológica'), ('ot', 'Otro')]
+    tipo = models.CharField(choices=TIPOS_CHOICES, max_length=2)
+    descripcion = models.TextField()
+    
+    class Meta:
+        abstract = True
+
+class ApoyoProteccionEspecialAbstracto(models.Model):
+    descripcion = models.TextField()
+
+    class Meta:
+        abstract = True
+
+class ApoyoTraductorAbstracto(models.Model):
+    idioma = models.CharField(max_length=20)
+    descripcion = models.TextField()
+
+    class Meta:
+        abstract = True
+
+
+class ApoyoConsularAbstracto(models.Model):
+
+    descripcion = models.TextField()
+
+    class Meta:
+        abstract = True
+
+# APOYOS HEREDAN DE ABSTRACTOS ANTERIORES
+
+class ApoyoVictimaTraslado(ApoyoAbstracto, ApoyoTrasladoAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_traslado', on_delete=models.CASCADE)
+    
+
+class ApoyoTestigoTraslado(ApoyoAbstracto, ApoyoTrasladoAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_traslado', on_delete=models.CASCADE)
+    
+
+class ApoyoVictimaEstadia(ApoyoAbstracto, ApoyoEstadiaAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_estadia', on_delete=models.CASCADE)
+
+class ApoyoTestigoEstadia(ApoyoAbstracto, ApoyoEstadiaAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_estadia', on_delete=models.CASCADE)    
+
+
+class ApoyoVictimaAlimentacion(ApoyoAbstracto, ApoyoAlimentacionAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_alimentacion', on_delete=models.CASCADE)
+
+class ApoyoTestigoAlimentacion(ApoyoAbstracto, ApoyoAlimentacionAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_alimentacion', on_delete=models.CASCADE)
+
+class ApoyoVictimaAsistenciaMedica(ApoyoAbstracto, ApoyoAsistenciaMedicaAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_asistencia_medica', on_delete=models.CASCADE)
+
+class ApoyoTestigoAsistenciaMedica(ApoyoAbstracto, ApoyoAsistenciaMedicaAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_asistencia_medica', on_delete=models.CASCADE)
+
+class ApoyoVictimaProteccionEspecial(ApoyoAbstracto, ApoyoProteccionEspecialAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_proteccion_especial', on_delete=models.CASCADE)
+
+class ApoyoTestigoProteccionEspecial(ApoyoAbstracto, ApoyoProteccionEspecialAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_proteccion_especial', on_delete=models.CASCADE)
+
+class ApoyoVictimaTraductor(ApoyoAbstracto, ApoyoTraductorAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_traductor', on_delete=models.CASCADE)
+
+class ApoyoTestigoTraductor(ApoyoAbstracto, ApoyoTraductorAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_traductor', on_delete=models.CASCADE)
+
+class ApoyoVictimaConsular(ApoyoAbstracto, ApoyoConsularAbstracto):
+    victima = models.ForeignKey(Victima, related_name='apoyos_consular', on_delete=models.CASCADE)
+
+class ApoyoTestigoConsular(ApoyoAbstracto, ApoyoConsularAbstracto):
+    testigo = models.ForeignKey(Testigo, related_name='apoyos_consular', on_delete=models.CASCADE)    
 
 '''
 class ApoyoVictimaEstadia(models.Model):
