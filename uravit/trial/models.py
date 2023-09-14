@@ -32,7 +32,6 @@ class Persona(models.Model):
 
 class Testigo(Persona):
     juicio = models.ForeignKey(Juicio, related_name="testigos", on_delete=models.CASCADE )
-
     edad = models.IntegerField(null=True)
     bool_pauta_lista = models.BooleanField(default=False)
     link_pauta_necesidades = models.URLField(null=True, blank=True)
