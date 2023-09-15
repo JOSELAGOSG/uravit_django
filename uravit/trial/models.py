@@ -38,6 +38,9 @@ class Testigo(Persona):
 
     def __str__(self):
         return f'Testigo: {self.nombre} | {self.id_juicio}'
+    
+    def get_absolute_url(self):
+        return reverse('trials:testigo-detail')
 
 class Victima(Persona):
     juicio = models.ForeignKey(Juicio, related_name="victimas", on_delete=models.CASCADE )
@@ -76,13 +79,13 @@ class ApoyoTrasladoAbstracto(models.Model):
     VEHICULOS_CHOICES = [('tx', 'Taxi'), ('vi', 'Vehículo Institucional'), ('bs','Bus'), ('av', 'Avión')]
     tipo = models.CharField(choices=TIPOS_CHOICES, max_length=2) #Si es traslado local o desde otra region
     vehiculo = models.CharField(choices=VEHICULOS_CHOICES, max_length=2)
-    
+    descripcion = models.TextField(null=True)
     class Meta:
         abstract = True
 
 class ApoyoEstadiaAbstracto(models.Model):
     con_alimentacion = models.BooleanField(default=False)
-    descripcion = models.TextField()
+    descripcion = models.TextField(null=True)
     class Meta:
         abstract = True
 
@@ -96,7 +99,7 @@ class ApoyoAlimentacionAbstracto(models.Model):
 class ApoyoAsistenciaMedicaAbstracto(models.Model):
     TIPOS_CHOICES = [('pq', 'Psiquiátrica'), ('pc', 'Psicológica'), ('ot', 'Otro')]
     tipo = models.CharField(choices=TIPOS_CHOICES, max_length=2)
-    descripcion = models.TextField()
+    descripcion = models.TextField(null=True)
     
     class Meta:
         abstract = True
@@ -109,14 +112,13 @@ class ApoyoProteccionEspecialAbstracto(models.Model):
 
 class ApoyoTraductorAbstracto(models.Model):
     idioma = models.CharField(max_length=20)
-    descripcion = models.TextField()
+    descripcion = models.TextField(null=True)
 
     class Meta:
         abstract = True
 
 
 class ApoyoConsularAbstracto(models.Model):
-
     descripcion = models.TextField()
 
     class Meta:
