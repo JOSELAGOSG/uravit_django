@@ -128,6 +128,7 @@ class PeritoCreateView(CreateView):
 
 # Apoyos Views
 
+# Apoyo Victima Traslado CRUD
 class ApoyoVictimaTrasladoCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_traslado_form.html'
     model = ApoyoVictimaTraslado
@@ -145,6 +146,16 @@ class ApoyoVictimaTrasladoCreateView(CreateView):
         )
         return redirect(self.object.victima.get_absolute_url())
 
+class ApoyoVictimaTrasladoDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_traslado_detail.html'
+    model = ApoyoVictimaTraslado
+    context_object_name = 'apoyo'
+
+
+
+
+#ApoyoTestigoTraslado CRUD
+
 class ApoyoTestigoTrasladoCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_traslado_form.html'
     model = ApoyoTestigoTraslado
@@ -161,7 +172,14 @@ class ApoyoTestigoTrasladoCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.testigo.get_absolute_url())
-    
+
+class ApoyoTestigoTrasladoDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_traslado_form.html'
+    model = ApoyoTestigoTraslado
+    context_object_name = 'apoyo'
+
+#ApoyoVictimaEstadia CRUD
+
 class ApoyoVictimaEstadiaCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_estadia_form.html'
     model = ApoyoVictimaEstadia
@@ -177,6 +195,15 @@ class ApoyoVictimaEstadiaCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.victima.get_absolute_url())
+
+class ApoyoVictimaEstadiaDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_estadia_detail.html'
+    model = ApoyoVictimaEstadia
+    context_object_name = 'apoyo'
+
+
+
+#ApoyoTestigoEstadia CRUD
 
 class ApoyoTestigoEstadiaCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_estadia_form.html'
@@ -194,6 +221,13 @@ class ApoyoTestigoEstadiaCreateView(CreateView):
         )
         return redirect(self.object.testigo.get_absolute_url())
 
+class ApoyoTestigoEstadiaDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_estadia_form.html'
+    model = ApoyoTestigoEstadia
+    context_object_name = 'apoyo'
+
+#ApoyoVictimaAlimentacion CRUD
+
 class ApoyoVictimaAlimentacionCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_alimentacion_form.html'
     model = ApoyoVictimaAlimentacion
@@ -208,7 +242,14 @@ class ApoyoVictimaAlimentacionCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.victima.get_absolute_url())
-    
+
+class ApoyoVictimaAlimentacionDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_alimentacion_detail.html'
+    model = ApoyoVictimaAlimentacion
+    context_object_name = 'apoyo'
+
+#ApoyoTestigoAlimentacion CRUD    
+
 class ApoyoTestigoAlimentacionCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_alimentacion_form.html'
     model = ApoyoTestigoAlimentacion
@@ -223,7 +264,15 @@ class ApoyoTestigoAlimentacionCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.testigo.get_absolute_url())
-    
+
+class ApoyoTestigoAlimentacionDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_alimentacion_detail.html'
+    model = ApoyoTestigoAlimentacion
+    context_object_name = 'apoyo'
+
+
+#ApoyoVictimaAsistenciaMedica CRUD
+
 class ApoyoVictimaAsistenciaMedicaCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_asistencia_medica_form.html'
     model = ApoyoVictimaAsistenciaMedica
@@ -239,7 +288,16 @@ class ApoyoVictimaAsistenciaMedicaCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.victima.get_absolute_url())
-    
+
+class ApoyoVictimaAsistenciaMedicaDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_asistencia_medica_detail.html'
+    model = ApoyoVictimaAsistenciaMedica
+    context_object_name = 'apoyo'
+
+
+
+#ApoyoTestigoAsistenciaMedica CRUD    
+
 class ApoyoTestigoAsistenciaMedicaCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_asistencia_medica_form.html'
     model = ApoyoTestigoAsistenciaMedica
@@ -256,6 +314,13 @@ class ApoyoTestigoAsistenciaMedicaCreateView(CreateView):
         )
         return redirect(self.object.testigo.get_absolute_url())
 
+class ApoyoTestigoAsistenciaMedicaDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_asistencia_medica_detail.html'
+    model = ApoyoTestigoAsistenciaMedica
+    context_object_name = 'apoyo'
+
+#ApoyoVictimaProteccionEspecial CRUD
+
 class ApoyoVictimaProteccionEspecialCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_proteccion_especial_form.html'
     model = ApoyoVictimaProteccionEspecial
@@ -270,6 +335,13 @@ class ApoyoVictimaProteccionEspecialCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.victima.get_absolute_url())
+
+class ApoyoVictimaProteccionEspecialDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_proteccion_especial_detail.html'
+    model = ApoyoVictimaProteccionEspecial
+    context_object_name = 'apoyo'
+
+#ApoyoTestigoProteccionEspecial CRUD
 
 class ApoyoTestigoProteccionEespecialCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_proteccion_especial_form.html'
@@ -286,8 +358,16 @@ class ApoyoTestigoProteccionEespecialCreateView(CreateView):
         )
         return redirect(self.object.testigo.get_absolute_url())
 
+class ApoyoTestigoProteccionEspecialDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_proteccion_especial_detail.html'
+    model = ApoyoTestigoProteccionEspecial
+    context_object_name = 'apoyo'
+
+#ApoyoVictimaTraductor CRUD
+
+
 class ApoyoVictimaTraductorCreateView(CreateView):
-    template_name = 'trial/apoyo/apoyo_traductor.html'
+    template_name = 'trial/apoyo/apoyo_traductor_form.html'
     model = ApoyoVictimaTraductor
     fields = ['estado', 'equipo_a_cargo', 'idioma', 'descripcion']
 
@@ -302,8 +382,14 @@ class ApoyoVictimaTraductorCreateView(CreateView):
         )
         return redirect(self.object.victima.get_absolute_url())
 
+class ApoyoVictimaTraductorDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_traductor_detail.html'
+    model = ApoyoVictimaTraductor
+    context_object_name = 'apoyo'
+
+#ApoyoTestigoTraductor CRUD
 class ApoyoTestigoTraductorCreateView(CreateView):
-    template_name = 'trial/apoyo/apoyo_traductor.html'
+    template_name = 'trial/apoyo/apoyo_traductor_form.html'
     model = ApoyoTestigoTraductor
     fields = ['estado', 'equipo_a_cargo', 'idioma', 'descripcion']
 
@@ -318,8 +404,14 @@ class ApoyoTestigoTraductorCreateView(CreateView):
         )
         return redirect(self.object.testigo.get_absolute_url())
 
+class ApoyoTestigoTraductorDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_traductor_detail.html'
+    model = ApoyoTestigoTraductor
+    context_object_name = 'apoyo'
+
+#ApoyoVictimaConsular CRUD
 class ApoyoVictimaConsularCreateView(CreateView):
-    template_name = 'trial/apoyo/apoyo_consular_form'
+    template_name = 'trial/apoyo/apoyo_consular_form.html'
     model = ApoyoVictimaConsular
     fields = ['estado', 'equipo_a_cargo', 'descripcion']
 
@@ -332,9 +424,15 @@ class ApoyoVictimaConsularCreateView(CreateView):
             descripcion = form.cleaned_data('descripcion')
         )
         return redirect(self.object.victima.get_absolute_url())
+    
+class ApoyoVictimaConsularDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_consular_detail.html'
+    model = ApoyoVictimaConsular
+    context_object_name = 'apoyo'
 
+#ApoyoTestigoConsular CRUD
 class ApoyoTestigoConsularCreateView(CreateView):
-    template_name = 'trial/apoyo/apoyo_consular_form'
+    template_name = 'trial/apoyo/apoyo_consular_form.html'
     model = ApoyoTestigoConsular
     fields = ['estado', 'equipo_a_cargo', 'descripcion']
 
@@ -348,7 +446,10 @@ class ApoyoTestigoConsularCreateView(CreateView):
         )
         return redirect(self.object.testigo.get_absolute_url())
 
-
+class ApoyoTestigoConsularDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_consular_detail.html'
+    model = ApoyoTestigoConsular
+    context_object_name = 'apoyo'
 
 
 
