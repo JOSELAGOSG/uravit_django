@@ -37,7 +37,7 @@ class Testigo(Persona):
     link_pauta_necesidades = models.URLField(null=True, blank=True)
 
     def __str__(self):
-        return f'Testigo: {self.nombre} | {self.id_juicio}'
+        return f'Testigo: {self.nombre} | {self.juicio}'
     
     def get_absolute_url(self):
         return reverse('trials:testigo-detail')
@@ -50,7 +50,7 @@ class Victima(Persona):
     link_pauta_necesidades = models.URLField(null=True)
     
     def __str__(self):
-        return f'Víctima: {self.nombre} | {self.id_juicio}'
+        return f'Víctima: {self.nombre} | {self.juicio}'
     
     def get_absolute_url(self):
         return reverse('trials:victima-detail', args=[self.pk])
@@ -60,7 +60,7 @@ class Perito(Persona):
     institucion = models.CharField(max_length=30)
 
     def __str__(self):
-        return f'Perito: {self.nombre} | {self.id_juicio}'
+        return f'Perito: {self.nombre} | {self.juicio}'
 
 # APOYOS
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
