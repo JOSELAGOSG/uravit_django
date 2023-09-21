@@ -42,7 +42,6 @@ class JuicioCreateView(CreateView):
     model = Juicio
     fields = '__all__'
     
-
 class JuicioDetailView(DetailView):
     template_name = 'trial/juicio/juicio_detail.html'
     model = Juicio
