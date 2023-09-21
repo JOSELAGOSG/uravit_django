@@ -532,7 +532,7 @@ class ApoyoVictimaProteccionEspecialDeleteView(DeleteView):
 
 #ApoyoTestigoProteccionEspecial CRUD
 
-class ApoyoTestigoProteccionEespecialCreateView(CreateView):
+class ApoyoTestigoProteccionEspecialCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_proteccion_especial_form.html'
     model = ApoyoTestigoProteccionEspecial
     fields = ['estado', 'equipo_a_cargo', 'descripcion']
@@ -552,6 +552,11 @@ class ApoyoTestigoProteccionEspecialDetailView(DetailView):
     model = ApoyoTestigoProteccionEspecial
     context_object_name = 'apoyo'
 
+
+class ApoyoTestigoProteccionEspecialUpdateView(UpdateView):
+    template_name = 'trial/apoyo/apoyo_proteccion_especial_form.html'
+    model = ApoyoTestigoProteccionEspecial
+    fields = ['estado', 'equipo_a_cargo', 'descripcion']
 
 class ApoyoTestigoProteccionEspecialDeleteView(DeleteView):
     template_name = 'trial/apoyo/apoyo_confirm_delete.html'
