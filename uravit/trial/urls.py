@@ -12,4 +12,6 @@ urlpatterns = [
     path('juicio/<int:juicio_pk>/create-perito/', views.PeritoCreateView.as_view(), name='perito-create'),
 
     path('victima/<int:pk>/', views.VictimaDetailView.as_view(), name='victima-detail'),
+    path('testigo/<int:pk>/', views.TestigoDetailView.as_view(), name='testigo-detail'),
+    path('perito/<int:pk>/', views.PeritoDetailView.as_view(), name='perito-detail')
 ]
