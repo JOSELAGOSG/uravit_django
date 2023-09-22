@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}List of Juicios{% endblock %}
+{% block title %}Lista de Juicios{% endblock %}
 
 {% block content %}
-  <h2>Juicios</h2>
+  <h2>Lista de Juicios</h2>
   <ul>
     {% for juicio in juicios %}
       <li><a href="{{juicio.get_absolute_url}}">{{ juicio.ruc }} - {{ juicio.auto_apertura }} - {{ juicio.fecha_juicio_oral }} - {{ juicio.fiscal }}</a></li>
