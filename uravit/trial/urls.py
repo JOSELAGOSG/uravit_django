@@ -29,6 +29,11 @@ urlpatterns = [
     path('perito/<int:pk>/update/', views.PeritoUpdateView.as_view(), name='perito-update'),
     path('perito/<int:pk>/delete/', views.PeritoDeleteView.as_view(), name='perito-delete'),
 
+
+    # Perfil
+    path('perfil/', views.PerfilListView.as_view(), name='perfil-list'),
+
+
     # ApoyoVictimaTraslado CRUD
     path('victima/<int:victima_pk>/create-apoyo-victima-traslado/', views.ApoyoVictimaTrasladoCreateView.as_view(), name='apoyo-victima-traslado-create'),
     path('apoyo-victima-traslado/<int:pk>/', views.ApoyoVictimaTrasladoDetailView.as_view(), name='apoyo-victima-traslado-detail'),

@@ -8,6 +8,7 @@ from .models import (
     Testigo,
     Victima,
     Perito,
+    Perfil,
     ApoyoVictimaTraslado,
     ApoyoTestigoTraslado,
     ApoyoVictimaEstadia,
@@ -177,7 +178,13 @@ class PeritoDeleteView(DeleteView):
         perito = self.object 
         juicio_pk = perito.juicio.pk
         return reverse_lazy('juicio-detail', kwargs={'pk': juicio_pk})
-# Apoyos Views
+
+# UsuarioEquipo Views
+
+class PerfilListView(ListView):
+    template_name = 'trial/perfil/perfil_list.html'
+    model = Perfil 
+    context_object_name = 'perfiles'
 
 # Apoyo Victima Traslado CRUD
 class ApoyoVictimaTrasladoCreateView(CreateView):

@@ -68,7 +68,7 @@ ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecut
 EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
                      ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
 
-class UsuarioEquipo(models.Model):
+class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     equipo = models.CharField(choices=EQUIPOS, max_length=2)
 
