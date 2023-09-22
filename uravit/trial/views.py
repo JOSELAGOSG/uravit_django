@@ -179,12 +179,35 @@ class PeritoDeleteView(DeleteView):
         juicio_pk = perito.juicio.pk
         return reverse_lazy('juicio-detail', kwargs={'pk': juicio_pk})
 
-# UsuarioEquipo Views
+# Perfil CRUD
+
+class PerfilCreateView(CreateView):
+    template_name = 'trial/perfil/perfil_form.html'
+    model = Perfil
+    fields = '__all__'
+
+class PerfilDetailView(DetailView):
+    template_name = 'trial/perfil/perfil_detail.html'
+    model = Perfil
+    context_object_name = 'perfil'
 
 class PerfilListView(ListView):
     template_name = 'trial/perfil/perfil_list.html'
     model = Perfil 
     context_object_name = 'perfiles'
+
+class PerfilUpdateView(UpdateView):
+    template_name = 'trial/perfil/perfil_form.html'
+    model = Perfil
+    fields = '__all__'
+
+class PerfilDeleteView(DeleteView):
+    template_name = 'trial/perfil/perfil_confirm_delete.html'
+    model = Perfil
+    context_object_name = 'perfil'
+    success_url = reverse_lazy('trial:perfil-list')
+
+
 
 # Apoyo Victima Traslado CRUD
 class ApoyoVictimaTrasladoCreateView(CreateView):

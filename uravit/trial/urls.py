@@ -30,8 +30,12 @@ urlpatterns = [
     path('perito/<int:pk>/delete/', views.PeritoDeleteView.as_view(), name='perito-delete'),
 
 
-    # Perfil
+    # Perfil CRUD
+    path('perfil/create/', views.PerfilCreateView.as_view(), name='perfil-create'),
     path('perfil/', views.PerfilListView.as_view(), name='perfil-list'),
+    path('perfil/<int:pk>/', views.PerfilDetailView.as_view(), name='perfil-detail'),
+    path('perfil/<int:pk>/update/', views.PerfilUpdateView.as_view(), name='perfil-update'),
+    path('perfil/<int:pk>/delete/', views.PerfilDeleteView.as_view(), name='perfil-delete'),
 
 
     # ApoyoVictimaTraslado CRUD
