@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -62,10 +63,15 @@ class Perito(Persona):
     def __str__(self):
         return f'Perito: {self.nombre} | {self.juicio}'
 
-# APOYOS
+
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
 EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
                      ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
+
+class UsuarioEquipo(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    equipo = models.CharField(choices=EQUIPOS, max_length=2)
+
 # MODELOS ABSTRACTOS
 class ApoyoAbstracto(models.Model):
     estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
