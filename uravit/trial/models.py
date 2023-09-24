@@ -17,6 +17,14 @@ class Juicio(models.Model):
     def get_absolute_url(self):
         return reverse('trials:juicio-detail', args=[self.pk])
 
+    def get_create_victima_url(self):
+        return reverse('trial:victima-create', args=[self.pk])
+
+    def get_create_testigo_url(self):
+        return reverse('trial:testigo-create', args=[self.pk])
+    
+    def get_create_perito_url(self):
+        return reverse('trial:perito-create', args=[self.pk])
 
 class Persona(models.Model):
     nombre = models.CharField(max_length=30)

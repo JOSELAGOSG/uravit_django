@@ -8,7 +8,7 @@
     {% for juicio in juicios %}
       <li><a href="{{juicio.get_absolute_url}}">{{ juicio.ruc }} - {{ juicio.auto_apertura }} - {{ juicio.fecha_juicio_oral }} - {{ juicio.fiscal }}</a></li>
     {% empty %}
-      <li>No juicios available.</li>
+      <li>No hay juicios aún</li>
     {% endfor %}
   </ul>
 {% endblock %}

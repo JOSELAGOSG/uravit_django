@@ -4,15 +4,14 @@
 
 {% block content %}
 <h1>Juicio RUC: {{ juicio.ruc }}</h1>
-<div class="card text-center">  
-  <div class="card-body">
+
    
     <li>Auto apertura: {{ juicio.auto_apertura }}</li>
     <li>Fecha Juicio Oral: {{ juicio.fecha_juicio_oral }}</li> 
     <li>Fiscal: {{ juicio.fiscal }}</li>
   
 
-  <h3>Víctimas</h3>
+  <div><h3>Víctimas</h3><a href="{{ juicio.get_create_victima_url }}">agregar víctima</a></div>
   <ul>
     {% for victima in juicio.victimas.all %}
     <li><a href="{{ victima.get_absolute_url }}">Víctima: {{ victima.nombre }}</a></li>
@@ -22,7 +21,7 @@
     </li>
     {% endfor %}
   </ul>
-  <h3>Testigos</h3>
+  <h3>Testigos</h3><a href="{{ juicio.get_create_testigo_url }}">agregar testigo</a>
   <ul>
     {% for testigo in juicio.testigos.all %}
     <li>Testigo: {{ testigo.nombre }}</li>
@@ -32,7 +31,7 @@
     </li>
     {% endfor %}
   </ul>
-  <h3>Peritos</h3>
+  <h3>Peritos</h3><a href="{{ juicio.get_create_perito_url }}">agregar perito</a>
   <ul>
     {% for perito in juicio.peritos.all %}
     <li>Perito: {{ perito.nombre }}</li>
@@ -42,6 +41,5 @@
     </li>
     {% endfor %}
   </ul>
-</div>
-</div>
+
 {% endblock %}
