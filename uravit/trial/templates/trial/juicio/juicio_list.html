@@ -4,6 +4,7 @@
 
 {% block content %}
   <h2>Lista de Juicios</h2>
+  <a href='{% url "trial:juicio-create" %}'>agregar juicio</a>
   <ul>
     {% for juicio in juicios %}
       <li><a href="{{juicio.get_absolute_url}}">{{ juicio.ruc }} - {{ juicio.auto_apertura }} - {{ juicio.fecha_juicio_oral }} - {{ juicio.fiscal }}</a></li>
