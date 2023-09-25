@@ -17,6 +17,9 @@ class Juicio(models.Model):
     def get_absolute_url(self):
         return reverse('trials:juicio-detail', args=[self.pk])
 
+    def get_update_url(self):
+        return reverse('trials:juicio-update', args=[self.pk])
+
     def get_create_victima_url(self):
         return reverse('trial:victima-create', args=[self.pk])
 
@@ -51,6 +54,9 @@ class Testigo(Persona):
     def get_absolute_url(self):
         return reverse('trials:testigo-detail')
 
+    def get_update_url(self):
+        return reverse('trials:testigo-update', args=[self.pk])
+    
 class Victima(Persona):
     juicio = models.ForeignKey(Juicio, related_name="victimas", on_delete=models.CASCADE )
 

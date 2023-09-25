@@ -80,13 +80,9 @@ class TestigoCreateView(CreateView):
     
     def form_valid(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
-        self.object = Testigo.objects.create(
-            juicio = juicio,
-            edad = form.cleaned_data['edad'],
-            bool_pauta_lista = form.cleaned_data['bool_pauta_lista'],
-            link_pauta_necesidades = form.cleaned_data['link_pauta_necesidades']
-        )
-
+        self.object = form.save(commit=False)
+        self.object.juicio = juicio
+        self.object.save()
         return redirect(self.object.juicio.get_absolute_url())
 
 class TestigoUpdateView(UpdateView):
@@ -119,13 +115,9 @@ class VictimaCreateView(CreateView):
 
     def form_valid(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
-        self.object = Victima.objects.create(
-            juicio = juicio,
-            edad = form.cleaned_data['edad'],
-            bool_pauta_lista = form.cleaned_data['bool_pauta_lista'],
-            link_pauta_necesidades = form.cleaned_data['link_pauta_necesidades']
-        )
-
+        self.object = form.save(commit=False)
+        self.object.juicio = juicio
+        self.object.save()
         return redirect(self.object.juicio.get_absolute_url())
 
 class VictimaUpdateView(UpdateView):
@@ -156,12 +148,11 @@ class PeritoCreateView(CreateView):
     model = Perito
     fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'institucion']
 
-    def form_vaild(self, form):
+    def form_valid(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
-        self.object = Perito.objects.create(
-            juicio = juicio,
-            institucion = form.cleaned_data['institucion']
-        )
+        self.object = form.save(commit=False)
+        self.object.juicio = juicio
+        self.object.save()
         return redirect(self.object.juicio.get_absolute_url())
     
 class PeritoUpdateView(UpdateView):
