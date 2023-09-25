@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Apoyo{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mt-3">Crear Apoyo</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="{{ form.tipo.id_for_label }}">Tipo de Apoyo:</label>
+      {{ form.tipo }}
+    </div>
+ 
+    <!-- Campos relacionados al tipo de apoyo "Traslado" -->
+    <div class="form-group" id="traslado-fields" style="display: none;">
+      <label for="{{ form.traslado_tipo.id_for_label }}">Tipo de Traslado:</label>
+      {{ form.traslado_tipo }}
+      <label for="{{ form.traslado_vehiculo.id_for_label }}">Vehículo:</label>
+      {{ form.traslado_vehiculo }}
+    </div>
+  
+    <!-- Campos relacionados al tipo de apoyo "Estadía" -->
+    <div class="form-group" id="estadia-fields" style="display: none;">
+      <label for="{{ form.estadia_con_alimentacion.id_for_label }}">Estadía con Alimentación:</label>
+      {{ form.estadia_con_alimentacion }}
+      <!-- Agrega otros campos relacionados a la estadía aquí -->
+    </div>
+  
+    <!-- Campos relacionados al tipo de apoyo "Asistencia Médica" -->
+    <div class="form-group" id="asistencia-medica-fields" style="display: none;">
+      <label for="{{ form.asistencia_medica_tipo.id_for_label }}">Tipo Asistencia Médica:</label>
+      {{ form.asistencia_medica_tipo }}
+    </div>
+  
+    <!-- Campos relacionados al tipo de apoyo "Traductor" -->
+    <div class="form-group" id="traductor-fields" style="display: none;">
+      <label for="{{ form.traductor_idioma.id_for_label }}">Idioma:</label>
+      {{ form.traductor_idioma }}
+    </div>
+
+    <br><br><br>
+    
+    <div class="form-group">
+      <label for="{{ form.equipo_a_cargo.id_for_label }}">Equipo a Cargo:</label>
+      {{ form.equipo_a_cargo }}
+    </div>
+  
+    <div class="form-group">
+      <label for="{{ form.estado.id_for_label }}">Estado:</label>
+      {{ form.estado }}
+    </div>
+  
+    <div class="form-group">
+      <label for="{{ form.descripcion.id_for_label }}">Descripción:</label>
+      {{ form.descripcion }}
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // Evento que se dispara cuando cambia el valor del campo "tipo"
+    $("#id_tipo").change(function() {
+      // Oculta todos los campos relacionados
+      $("#traslado-fields, #estadia-fields, #alimentacion-fields, #asistencia-medica-fields, #proteccion-especial-fields, #traductor-fields, #consular-fields").hide();
+
+      // Obtiene el valor seleccionado en "tipo"
+      var selectedTipo = $(this).val();
+
+      // Muestra los campos relacionados al tipo seleccionado
+      if (selectedTipo === "tl") {
+        $("#traslado-fields").show();
+      } else if (selectedTipo === "et") {
+        $("#estadia-fields").show();
+      } else if (selectedTipo === "al") {
+        $("#alimentacion-fields").show();
+      } else if (selectedTipo === "am") {
+        $("#asistencia-medica-fields").show();
+      } else if (selectedTipo === "pe") {
+        $("#proteccion-especial-fields").show();
+      } else if (selectedTipo === "td") {
+        $("#traductor-fields").show();
+      } else if (selectedTipo === "cs") {
+        $("#consular-fields").show();
+      }
+
+      // Agrega más casos para otros tipos de apoyo si es necesario
+    });
+  });
+</script>
+
+
+{% endblock %}

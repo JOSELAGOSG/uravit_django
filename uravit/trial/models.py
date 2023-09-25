@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -199,3 +200,40 @@ class ApoyoVictimaConsular(ApoyoAbstracto, ApoyoConsularAbstracto):
 
 class ApoyoTestigoConsular(ApoyoAbstracto, ApoyoConsularAbstracto):
     testigo = models.ForeignKey(Testigo, related_name='apoyos_consular', on_delete=models.CASCADE)    
+
+
+
+
+
+class Apoyo(models.Model):
+    # Choices necesarios para algunos campos
+    TIPOS_APOYO_CHOICES = [('tl', 'Traslado'), ('et', 'Estadía'), ('al', 'Alimentación'), ('am', 'Asistencia Médica'), ('pe', 'Protección Especial'), ('td', 'Traductor'), ('cs', 'Consular')]
+    TIPOS_TRASLADOS_CHOICES = [('lo', 'Local'), ('or', 'Otra Región')]
+    VEHICULOS_CHOICES = [('tx', 'Taxi'), ('vi', 'Vehículo Institucional'), ('bs','Bus'), ('av', 'Avión')]
+    TIPOS_ASISTENCIA_MEDICA_CHOICES = [('pq', 'Psiquiátrica'), ('pc', 'Psicológica'), ('ot', 'Otro')]
+
+    tipo = models.CharField(choices=TIPOS_APOYO_CHOICES, max_length=2)
+
+    # Campos relacionados a todos los tipos de apoyo
+    victima = models.ForeignKey(Victima, related_name='apoyos', on_delete=models.CASCADE, null=True, blank=True)
+    testigo = models.ForeignKey(Testigo, related_name='apoyos', on_delete=models.CASCADE, null=True, blank=True)
+    equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
+    estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
+    descripcion = models.TextField(null=True, blank=True)
+
+    # Campos relacionados a Traslado
+    traslado_tipo = models.CharField(choices=TIPOS_TRASLADOS_CHOICES, max_length=2, null=True, blank=True) #Si es traslado local o desde otra region
+    traslado_vehiculo = models.CharField(choices=VEHICULOS_CHOICES, max_length=2, null=True, blank=True)
+
+    # Campos relacionados a Estadía
+    estadia_con_alimentacion = models.BooleanField(default=False, null=True, blank=True)
+
+    # Campos relacionados a Asistencia Médica
+    asistencia_medica_tipo = models.CharField(choices=TIPOS_ASISTENCIA_MEDICA_CHOICES, max_length=2, null=True, blank=True)
+
+    # Campos relacionados a Traductor
+    traductor_idioma = models.CharField(max_length=20, null=True, blank=True)
+
+    def clean(self):
+        if self.victima and self.testigo:
+            raise ValidationError("Un apoyo no puede estar relacionado tanto con una víctima como con un testigo al mismo tiempo.")

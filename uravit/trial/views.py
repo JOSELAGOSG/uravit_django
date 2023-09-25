@@ -23,6 +23,7 @@ from .models import (
     ApoyoTestigoTraductor,
     ApoyoVictimaConsular,
     ApoyoTestigoConsular,
+    Apoyo,
 )
 from django.views.generic.edit import (
     CreateView,
@@ -757,3 +758,45 @@ class ApoyoTestigoConsularDeleteView(DeleteView):
 
 
 
+class ApoyoVictimaCreateView(CreateView):
+    template_name = 'trial/apoyo/apoyo_form.html'
+    model = Apoyo
+    fields = [
+        'tipo', 
+        'equipo_a_cargo',
+        'estado', 
+        'descripcion', 
+        'traslado_tipo',
+        'traslado_vehiculo',
+        'estadia_con_alimentacion',
+        'asistencia_medica_tipo',
+        'traductor_idioma'
+        ]
+    def form_valid(self, form):
+        victima = get_object_or_404(Victima, pk=self.kwargs['victima_pk'])
+        self.object = form.save(commit=False)
+        self.object.victima = victima
+        self.object.save()
+        print("Apoyo guardado exitosamente")
+        return redirect(self.object.victima.get_absolute_url())
+
+class ApoyoTestigoCreateView(CreateView):
+    template_name = 'trial/apoyo/apoyo_form.html'
+    model = Apoyo
+    fields = [
+        'tipo', 
+        'equipo_a_cargo',
+        'estado', 
+        'descripcion', 
+        'traslado_tipo',
+        'traslado_vehiculo',
+        'estadia_con_alimentacion',
+        'asistencia_medica_tipo',
+        'traductor_idioma'
+        ]
+    def form_valid(self, form):
+        testigo = get_object_or_404(Testigo, pk=self.kwargs['testigo_pk'])
+        self.object = form.save(commit=False)
+        self.object.testigo = testigo
+        self.object.save()
+        return redirect(self.object.testigo.get_absolute_url())

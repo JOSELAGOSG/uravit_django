@@ -22,5 +22,34 @@
   </ul>
 
   <a href="{{ victima.juicio.get_absolute_url }}" class="btn btn-secondary mt-3">Volver a juicio</a>
+ <!-- Mostrar apoyos relacionados a la víctima -->
+ <h3 class="mt-4">Apoyos</h3>
+ <a href="{% url 'trial:apoyo-victima-create' victima_pk=victima.pk %}" class="btn btn-success mt-3">Crear Nuevo Apoyo</a>
+ <ul class="list-group">
+   {% for apoyo in victima.apoyos.all %}
+     <li class="list-group-item">
+       <strong>Tipo de Apoyo:</strong> {{ apoyo.get_tipo_display }}<br>
+       <strong>Equipo a Cargo:</strong> {{ apoyo.get_equipo_a_cargo_display }}<br>
+       <strong>Estado:</strong> {{ apoyo.get_estado_display }}<br>
+       <strong>Descripción:</strong> {{ apoyo.descripcion }}
+       
+       <!-- Mostrar campos específicos según el tipo de apoyo -->
+       {% if apoyo.tipo == 'tl' %}
+         <strong>Tipo de Traslado:</strong> {{ apoyo.get_traslado_tipo_display }}<br>
+         <strong>Vehículo:</strong> {{ apoyo.get_traslado_vehiculo_display }}<br>
+       {% elif apoyo.tipo == 'et' %}
+         <strong>Estadía con Alimentación:</strong> {{ apoyo.estadia_con_alimentacion }}<br>
+       {% elif apoyo.tipo == 'am' %}
+         <strong>Tipo de Asistencia Médica:</strong> {{ apoyo.get_asistencia_medica_tipo_display }}<br>
+       {% elif apoyo.tipo == 'td' %}
+         <strong>Idioma del Traductor:</strong> {{ apoyo.traductor_idioma }}<br>
+       {% endif %}
+     </li>
+   {% empty %}
+     <li class="list-group-item">No hay apoyos registrados para esta víctima.</li>
+   {% endfor %}
+ </ul>
+
+
 </div>
 {% endblock %}

@@ -120,6 +120,10 @@ urlpatterns = [
     path('apoyo-testigo-consular/<int:pk>/update/', views.ApoyoTestigoConsularUpdateView.as_view(), name='apoyo-testigo-consular-update'),
     path('apoyo-testigo-consular/<int:pk>/delete/', views.ApoyoTestigoConsularDeleteView.as_view(), name='apoyo-testigo-consular-delete'),
 
+    # Apoyo Victima CRUD
+    path('victima/<int:victima_pk>/create-apoyo/', views.ApoyoVictimaCreateView.as_view(), name='apoyo-victima-create'),
 
+    # Apoyo Testigo CRUD
+    path('testigo/<int:testigo_pk>/create-apoyo/', views.ApoyoTestigoCreateView.as_view(), name='apoyo-testigo-create')
 
 ]
