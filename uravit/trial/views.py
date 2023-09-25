@@ -76,7 +76,7 @@ class TestigoDetailView(DetailView):
 class TestigoCreateView(CreateView):
     template_name = 'trial/testigo/testigo_form.html'
     model = Testigo
-    fields = ['edad', 'bool_pauta_lista', 'link_pauta_necesidades']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'edad', 'bool_pauta_lista', 'link_pauta_necesidades']
     
     def form_valid(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
@@ -92,7 +92,7 @@ class TestigoCreateView(CreateView):
 class TestigoUpdateView(UpdateView):
     template_name = 'trial/testigo/testigo_form.html'
     model = Testigo
-    fields = ['edad', 'bool_pauta_lista', 'link_pauta_necesidades']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'edad', 'bool_pauta_lista', 'link_pauta_necesidades']
 
 class TestigoDeleteView(DeleteView):
     template_name = 'trial/testigo/testigo_confirm_delete.html'
@@ -115,7 +115,7 @@ class VictimaDetailView(DetailView):
 class VictimaCreateView(CreateView):
     template_name = 'trial/victima/victima_form.html'
     model = Victima
-    fields = ['edad', 'bool_pauta_lista', 'link_pauta_necesidades']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'edad', 'bool_pauta_lista', 'link_pauta_necesidades']
 
     def form_valid(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
@@ -131,7 +131,7 @@ class VictimaCreateView(CreateView):
 class VictimaUpdateView(UpdateView):
     template_name = 'trial/victima/victima_form.html'
     model = Victima
-    fields = ['edad', 'bool_pauta_lista', 'link_pauta_necesidades']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'edad', 'bool_pauta_lista', 'link_pauta_necesidades']
 
 class VictimaDeleteView(DeleteView):
     template_name = 'trial/victima/victima_confirm_delete.html'
@@ -154,7 +154,7 @@ class PeritoDetailView(DetailView):
 class PeritoCreateView(CreateView):
     template_name = 'trial/perito/perito_form.html'
     model = Perito
-    fields = ['institucion']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'institucion']
 
     def form_vaild(self, form):
         juicio = get_object_or_404(Juicio, pk=self.kwargs['juicio_pk'])
@@ -167,7 +167,7 @@ class PeritoCreateView(CreateView):
 class PeritoUpdateView(UpdateView):
     template_name = 'trial/perito/perito_form.html'
     model = Perito
-    fields = ['institucion']
+    fields = ['nombre', 'rut', 'direccion', 'correo', 'telefono', 'bool_esta_notificada', 'observaciones', 'institucion']
 
 class PeritoDeleteView(DeleteView):
     template_name = 'trial/perito/perito_confirm_delete.html'
