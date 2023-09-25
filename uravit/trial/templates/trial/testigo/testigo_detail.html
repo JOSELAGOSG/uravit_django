@@ -25,20 +25,46 @@
 
 
 <!-- Muestra los apoyos relacionados al testigo -->
-<h2 class="mt-3">Apoyos</h2>
-<a href="{% url 'trial:apoyo-testigo-create' testigo_pk=testigo.pk %}" class="btn btn-success mt-3">Crear Nuevo Apoyo</a>
-<ul class="list-group mt-4">
-  {% for apoyo in testigo.apoyos.all %}
-    <li class="list-group-item">
-      Tipo: {{ apoyo.get_tipo_display }}<br>
-      Estado: {{ apoyo.get_estado_display }}<br>
-      Descripción: {{ apoyo.descripcion }}<br>
-      <!-- Agrega más campos de apoyo aquí según tus necesidades -->
-    </li>
-  {% empty %}
-    <li class="list-group-item">No hay apoyos registrados para este testigo.</li>
-  {% endfor %}
-</ul>
+<h3 class="mt-4">Apoyos</h3>
+  <a href="{% url 'trial:apoyo-testigo-create' testigo_pk=testigo.pk %}" class="btn btn-success mt-3">Crear Nuevo Apoyo</a>
 
+  <table class="table table-bordered mt-3" id="apoyos-table">
+    <thead>
+      <tr>
+        <th>Tipo de Apoyo</th>
+        <th>Equipo a Cargo</th>
+        <th>Estado</th>
+        <th>Descripción</th>
+        <!-- Agregar más encabezados de columnas según sea necesario -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for apoyo in testigo.apoyos.all %}
+      <tr>
+        <td>{{ apoyo.get_tipo_display }}</td>
+        <td>{{ apoyo.get_equipo_a_cargo_display }}</td>
+        <td>
+          <span class="{% if apoyo.estado == 'so' %}text-warning{% elif apoyo.estado == 'ep' %}text-success{% elif apoyo.estado == 'ej' %}text-success{% endif %}">
+            {{ apoyo.get_estado_display }}
+          </span>
+        </td>
+        <td>{{ apoyo.descripcion }}</td>
+        <!-- Agregar más datos de apoyo según sea necesario -->
+      </tr>
+      
+      {% empty %}
+        <tr>
+          <td colspan="4">No hay apoyos registrados para esta víctima.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
+
+<script>
+  $(document).ready(function() {
+    // Inicializar DataTable en la tabla de apoyos
+    $('#apoyos-table').DataTable();
+  });
+</script>
 {% endblock %}
