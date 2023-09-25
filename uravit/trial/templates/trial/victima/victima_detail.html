@@ -3,7 +3,7 @@
 {% block title %}Victima {{ victima.nombre }}{% endblock %}
 
 {% block content %}
-<h1>Victima: {{ victima.nombre }}</h1>
+<h1>Victima: {{ victima.nombre }}</h1><a href="{{ victima.get_update_url }}">editar víctima</a>
 <li>{{victima.id_juicio}}</li>
 <li>{{victima.edad}}</li>
 <li>{{victima.bool_pauta_lista}}</li>

@@ -70,6 +70,9 @@ class Victima(Persona):
     def get_absolute_url(self):
         return reverse('trials:victima-detail', args=[self.pk])
 
+    def get_update_url(self):
+        return reverse('trials:victima-update', args=[self.pk])
+
 class Perito(Persona):
     juicio = models.ForeignKey(Juicio, related_name="peritos", on_delete=models.CASCADE )
     institucion = models.CharField(max_length=30)
@@ -77,6 +80,12 @@ class Perito(Persona):
     def __str__(self):
         return f'Perito: {self.nombre} | {self.juicio}'
 
+    def get_absolute_url(self):
+        return reverse('trials:perito-detail', args=[self.pk])
+
+    def get_update_url(self):
+        return reverse('trials:perito-update', args=[self.pk])
+    
 
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
 EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 

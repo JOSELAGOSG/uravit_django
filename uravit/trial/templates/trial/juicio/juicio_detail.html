@@ -3,7 +3,7 @@
 {% block title %}Juicio {{ juicio.ruc }}{% endblock %}
 
 {% block content %}
-<h1>Juicio RUC: {{ juicio.ruc }}</h1>
+<h1>Juicio RUC: {{ juicio.ruc }}</h1><a href="{{ juicio.get_update_url }}">editar juicio</a>
 
    
     <li>Auto apertura: {{ juicio.auto_apertura }}</li>
