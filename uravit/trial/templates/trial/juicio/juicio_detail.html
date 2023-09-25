@@ -3,43 +3,55 @@
 {% block title %}Juicio {{ juicio.ruc }}{% endblock %}
 
 {% block content %}
-<h1>Juicio RUC: {{ juicio.ruc }}</h1><a href="{{ juicio.get_update_url }}">editar juicio</a>
+<div class="container">
+  <h1 class="mt-3">Juicio RUC: {{ juicio.ruc }}</h1>
+  <a href="{{ juicio.get_update_url }}" class="btn btn-primary btn-sm mb-3">Editar</a>
+  <a href="{% url 'trial:juicio-delete' juicio.pk %}" class="btn btn-danger btn-sm mb-3">Eliminar</a>
 
-   
-    <li>Auto apertura: {{ juicio.auto_apertura }}</li>
-    <li>Fecha Juicio Oral: {{ juicio.fecha_juicio_oral }}</li> 
-    <li>Fiscal: {{ juicio.fiscal }}</li>
-  
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Auto apertura:</strong> {{ juicio.auto_apertura }}</li>
+    <li class="list-group-item"><strong>Fecha Juicio Oral:</strong> {{ juicio.fecha_juicio_oral }}</li>
+    <li class="list-group-item"><strong>Fiscal:</strong> {{ juicio.fiscal }}</li>
+  </ul>
 
-  <div><h3>Víctimas</h3><a href="{{ juicio.get_create_victima_url }}">agregar víctima</a></div>
-  <ul>
+  <div class="mt-3"><h3>Víctimas</h3><a href="{{ juicio.get_create_victima_url }}" class="btn btn-success btn-sm">Agregar Víctima</a></div>
+  <ul class="list-group">
     {% for victima in juicio.victimas.all %}
-    <li><a href="{{ victima.get_absolute_url }}">Víctima: {{ victima.nombre }}</a></li>
+      <li class="list-group-item">
+        <a href="{{ victima.get_absolute_url }}">{{ victima.nombre }}</a>
+      </li>
     {% empty %}
-    <li>
-      No hay víctimas aún
-    </li>
-    {% endfor %}
-  </ul>
-  <h3>Testigos</h3><a href="{{ juicio.get_create_testigo_url }}">agregar testigo</a>
-  <ul>
-    {% for testigo in juicio.testigos.all %}
-    <li>Testigo: {{ testigo.nombre }}</li>
-    {% empty %}
-    <li>
-      No hay testigos aún
-    </li>
-    {% endfor %}
-  </ul>
-  <h3>Peritos</h3><a href="{{ juicio.get_create_perito_url }}">agregar perito</a>
-  <ul>
-    {% for perito in juicio.peritos.all %}
-    <li>Perito: {{ perito.nombre }}</li>
-    {% empty %}
-    <li>
-      No hay peritos aún
-    </li>
+      <li class="list-group-item">
+        No hay víctimas aún
+      </li>
     {% endfor %}
   </ul>
 
+  <div class="mt-3"><h3>Testigos</h3><a href="{{ juicio.get_create_testigo_url }}" class="btn btn-success btn-sm">Agregar Testigo</a></div>
+  <ul class="list-group">
+    {% for testigo in juicio.testigos.all %}
+      <li class="list-group-item">
+        <a href="{{ testigo.get_absolute_url }}">{{ testigo.nombre }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">
+        No hay testigos aún
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="mt-3"><h3>Peritos</h3><a href="{{ juicio.get_create_perito_url }}" class="btn btn-success btn-sm">Agregar Perito</a></div>
+  <ul class="list-group">
+    {% for perito in juicio.peritos.all %}
+      <li class="list-group-item">
+        <a href="{{ perito.get_absolute_url }}">{{ perito.nombre }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">
+        No hay peritos aún
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}
+

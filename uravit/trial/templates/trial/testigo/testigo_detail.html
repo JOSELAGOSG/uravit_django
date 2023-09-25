@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Testigo {{ testigo.nombre }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Testigo: {{ testigo.nombre }}</h1>
+  <a href="{{ testigo.get_update_url }}" class="btn btn-primary">Editar testigo</a>
+
+  <ul class="list-group mt-4">
+    <li class="list-group-item"><strong>Nombre:</strong> {{ testigo.nombre }}</li>
+    <li class="list-group-item"><strong>RUT:</strong> {{ testigo.rut }}</li>
+    <li class="list-group-item"><strong>Dirección:</strong> {{ testigo.direccion }}</li>
+    <li class="list-group-item"><strong>Correo:</strong> {{ testigo.correo }}</li>
+    <li class="list-group-item"><strong>Teléfono:</strong> {{ testigo.telefono }}</li>
+    <li class="list-group-item"><strong>Notificada:</strong> {{ testigo.bool_esta_notificada }}</li>
+    <li class="list-group-item"><strong>Observaciones:</strong> {{ testigo.observaciones }}</li>
+    <li class="list-group-item"><strong>Juicio:</strong> {{ testigo.juicio }}</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ testigo.edad }}</li>
+    <li class="list-group-item"><strong>Pauta Lista:</strong> {{ testigo.bool_pauta_lista }}</li>
+    <li class="list-group-item"><strong>Link Pauta Necesidades:</strong> {{ testigo.link_pauta_necesidades }}</li>
+  </ul>
+
+  <a href="{{ testigo.juicio.get_absolute_url }}" class="btn btn-secondary mt-3">Volver a juicio</a>
+</div>
+{% endblock %}

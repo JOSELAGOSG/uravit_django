@@ -12,7 +12,7 @@ class Juicio(models.Model):
 
 
     def __str__(self):
-        return(f'Juicio: {self.ruc}')
+        return(f'{self.ruc}')
 
     def get_absolute_url(self):
         return reverse('trials:juicio-detail', args=[self.pk])
@@ -49,10 +49,10 @@ class Testigo(Persona):
     link_pauta_necesidades = models.URLField(null=True, blank=True)
 
     def __str__(self):
-        return f'Testigo: {self.nombre} | {self.juicio}'
+        return f'{self.nombre}'
     
     def get_absolute_url(self):
-        return reverse('trials:testigo-detail')
+        return reverse('trials:testigo-detail', args=[self.pk])
 
     def get_update_url(self):
         return reverse('trials:testigo-update', args=[self.pk])
@@ -65,7 +65,7 @@ class Victima(Persona):
     link_pauta_necesidades = models.URLField(null=True)
     
     def __str__(self):
-        return f'Víctima: {self.nombre} | {self.juicio}'
+        return f'{self.nombre}'
     
     def get_absolute_url(self):
         return reverse('trials:victima-detail', args=[self.pk])
@@ -78,7 +78,7 @@ class Perito(Persona):
     institucion = models.CharField(max_length=30)
 
     def __str__(self):
-        return f'Perito: {self.nombre} | {self.juicio}'
+        return f'{self.nombre}'
 
     def get_absolute_url(self):
         return reverse('trials:perito-detail', args=[self.pk])

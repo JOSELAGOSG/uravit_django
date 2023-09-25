@@ -3,13 +3,42 @@
 {% block title %}Lista de Juicios{% endblock %}
 
 {% block content %}
-  <h2>Lista de Juicios</h2>
-  <a href='{% url "trial:juicio-create" %}'>agregar juicio</a>
-  <ul>
-    {% for juicio in juicios %}
-      <li><a href="{{juicio.get_absolute_url}}">{{ juicio.ruc }} - {{ juicio.auto_apertura }} - {{ juicio.fecha_juicio_oral }} - {{ juicio.fiscal }}</a></li>
-    {% empty %}
-      <li>No hay juicios aún</li>
-    {% endfor %}
-  </ul>
+<div class="container">
+  <h2 class="mt-3">Lista de Juicios</h2>
+  <a href="{% url 'trial:juicio-create' %}" class="btn btn-primary mb-3">Agregar Juicio</a>
+
+  <!-- Agrega una tabla con un ID -->
+  <table id="juicios-table" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>RUC</th>
+        <th>Auto Apertura</th>
+        <th>Fecha Juicio Oral</th>
+        <th>Fiscal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for juicio in juicios %}
+        <tr>
+          <td><a href="{{ juicio.get_absolute_url }}">{{ juicio.ruc }}</a></td>
+          <td>{{ juicio.auto_apertura }}</td>
+          <td>{{ juicio.fecha_juicio_oral }}</td>
+          <td>{{ juicio.fiscal }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No hay juicios aún</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Inicializa DataTables en la tabla con el ID "juicios-table"
+  $(document).ready(function() {
+    $('#juicios-table').DataTable();
+  });
+</script>
 {% endblock %}
+
