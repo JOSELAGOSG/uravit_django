@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - App Apoyos</title>
+    <!-- Agrega enlaces a las hojas de estilo (CSS) y scripts de Bootstrap desde CDN -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Iniciar Sesión</h2>
+                        <p class="text-center">App Apoyos</p> <!-- Aquí agregamos el encabezado "App Apoyos" -->
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Error:</strong> Credenciales inválidas. Por favor, verifica tus datos e inténtalo de nuevo.
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="id_username">Usuario:</label>
+                                <input type="text" id="id_username" name="username" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Contraseña:</label>
+                                <input type="password" id="id_password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega enlaces a los scripts de Bootstrap desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
