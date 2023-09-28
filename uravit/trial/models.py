@@ -89,12 +89,15 @@ class Perito(Persona):
     
 
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
-EQUIPOS = [('es', 'Equipo Especial Juicios'), ('ur', 'Equipo URAVIT'), 
-                     ('fi', 'Equipo Fiscal'), ('ug', 'Equipo UGI')]
+
+class Equipo(models.Model):
+    nombre = models.CharField(max_length=30)
+
+
 
 class Perfil(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    equipo = models.CharField(choices=EQUIPOS, max_length=2)
+    usuario = models.OneToOneField(User, related_name='perfil', on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, related_name='perfiles', on_delete=models.CASCADE)
 
 
 class Apoyo(models.Model):
@@ -109,7 +112,7 @@ class Apoyo(models.Model):
     # Campos relacionados a todos los tipos de apoyo
     victima = models.ForeignKey(Victima, related_name='apoyos', on_delete=models.CASCADE, null=True, blank=True)
     testigo = models.ForeignKey(Testigo, related_name='apoyos', on_delete=models.CASCADE, null=True, blank=True)
-    equipo_a_cargo = models.CharField(choices=EQUIPOS, max_length=2)
+    equipo_a_cargo = models.ForeignKey(Equipo, related_name='apoyos', on_delete=models.CASCADE)
     estado = models.CharField(choices=ESTADO_APOYO, max_length=2)
     descripcion = models.TextField(null=True, blank=True)
 
