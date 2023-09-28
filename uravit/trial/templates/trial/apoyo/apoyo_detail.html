@@ -12,6 +12,31 @@
         <th>Tipo de Apoyo:</th>
         <td>{{ apoyo.get_tipo_display }}</td>
       </tr>
+      {% if apoyo.tipo == 'tl'%}
+      <tr>
+        <th>Tipo Traslado:</th>
+        <td>{{ apoyo.get_traslado_tipo_display }}</td>
+      </tr>
+      <tr>
+        <th>Vehículo:</th>
+        <td>{{ apoyo.get_traslado_vehiculo_display }}</td>
+      </tr>
+      {% elif apoyo.tipo == 'et' %}
+      <tr>
+        <th>Con Alimentación:</th>
+        <td>{{ apoyo.estadia_con_alimentacion|yesno:"Sí,No" }}</td>
+      </tr>
+      {% elif apoyo.tipo == 'am' %}
+      <tr>
+        <th>Tipo Asistencia:</th>
+        <td>{{ apoyo.get_display_asistencia_medica_tipo }}</td>
+      </tr>
+      {% elif apoyo.tipo == 'td' %}
+      <tr>
+        <th>Idioma:</th>
+        <td>{{ apoyo.traductor_idioma }}</td>
+      </tr>
+      {% endif %}
       <tr>
         <th>Equipo a Cargo:</th>
         <td>{{ apoyo.equipo_a_cargo.nombre }}</td>
@@ -27,8 +52,7 @@
       <tr>
         <th>Descripción:</th>
         <td>{{ apoyo.descripcion }}</td>
-      </tr>
-      <!-- Agrega más campos específicos según el tipo de apoyo -->
+      </tr>      
     </tbody>
   </table>
 
