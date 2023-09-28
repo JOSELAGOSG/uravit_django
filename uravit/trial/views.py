@@ -253,7 +253,6 @@ class ApoyoDetailView(DetailView):
         
         if apoyo.equipo_a_cargo != perfil.equipo:
             return permission_denied(request, exception="Acceso Prohibido")
-        
         return super().get(request, *args, **kwargs)
 
 '''
@@ -284,6 +283,11 @@ class ApoyoListView(ListView):
                 queryset = Apoyo.objects.none()  # No hay perfil, por lo tanto, no se muestra nada
         return queryset
 
+
+class ApoyoEstadoUpdateView(UpdateView):
+    template_name = 'trial/apoyo/apoyo_estado_update.html'
+    model = Apoyo
+    fields = ['estado']
 
 class ApoyoVictimaDeleteView(DeleteView):
     template_name = 'trial/apoyo/apoyo_confirm_delete.html'

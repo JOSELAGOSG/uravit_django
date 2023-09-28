@@ -50,9 +50,9 @@ urlpatterns = [
     # Apoyo
     path('apoyo/', views.ApoyoListView.as_view(), name='apoyo-list'),
     path('apoyo/<int:pk>/', views.ApoyoDetailView.as_view(), name='apoyo-detail'),
-    path('apoyo/<int:pk>/v_delete/', views.ApoyoVictimaDeleteView.as_view(), name='apoyo-victima-delete'),
-    path('apoyo/<int:pk>/t_delete/', views.ApoyoTestigoDeleteView.as_view(), name='apoyo-testigo-delete'),
-
+    path('apoyo/<int:pk>/v-delete/', views.ApoyoVictimaDeleteView.as_view(), name='apoyo-victima-delete'),
+    path('apoyo/<int:pk>/t-delete/', views.ApoyoTestigoDeleteView.as_view(), name='apoyo-testigo-delete'),
+    path('apoyo/<int:pk>/estado-update/', views.ApoyoEstadoUpdateView.as_view(), name='apoyo-estado-update'),
     # Mi Perfil
     path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
 
