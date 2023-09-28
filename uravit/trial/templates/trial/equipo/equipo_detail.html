@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalles del Equipo: {{ equipo.nombre }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Detalles del Equipo: {{ equipo.nombre }}</h1>
+  <table class="table table-bordered mt-4">
+    <tbody>
+      <tr>
+        <th>Nombre:</th>
+        <td>{{ equipo.nombre }}</td>
+      </tr>
+      <!-- Agrega más atributos relacionados al equipo si es necesario -->
+    </tbody>
+  </table>
+  <a href="{% url 'trial:equipo-update' equipo.pk %}" class="btn btn-primary">Editar Equipo</a>
+  <a href="{% url 'trial:equipo-delete' equipo.pk %}" class="btn btn-danger">Eliminar Equipo</a>
+  <a href="{% url 'trial:equipo-list' %}" class="btn btn-secondary">Volver a la Lista de Equipos</a>
+</div>
+{% endblock %}

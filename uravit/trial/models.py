@@ -16,10 +16,10 @@ class Juicio(models.Model):
         return(f'{self.ruc}')
 
     def get_absolute_url(self):
-        return reverse('trials:juicio-detail', args=[self.pk])
+        return reverse('trial:juicio-detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('trials:juicio-update', args=[self.pk])
+        return reverse('trial:juicio-update', args=[self.pk])
 
     def get_create_victima_url(self):
         return reverse('trial:victima-create', args=[self.pk])
@@ -53,10 +53,10 @@ class Testigo(Persona):
         return f'{self.nombre}'
     
     def get_absolute_url(self):
-        return reverse('trials:testigo-detail', args=[self.pk])
+        return reverse('trial:testigo-detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('trials:testigo-update', args=[self.pk])
+        return reverse('trial:testigo-update', args=[self.pk])
     
 class Victima(Persona):
     juicio = models.ForeignKey(Juicio, related_name="victimas", on_delete=models.CASCADE )
@@ -69,10 +69,10 @@ class Victima(Persona):
         return f'{self.nombre}'
     
     def get_absolute_url(self):
-        return reverse('trials:victima-detail', args=[self.pk])
+        return reverse('trial:victima-detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('trials:victima-update', args=[self.pk])
+        return reverse('trial:victima-update', args=[self.pk])
 
 class Perito(Persona):
     juicio = models.ForeignKey(Juicio, related_name="peritos", on_delete=models.CASCADE )
@@ -82,10 +82,10 @@ class Perito(Persona):
         return f'{self.nombre}'
 
     def get_absolute_url(self):
-        return reverse('trials:perito-detail', args=[self.pk])
+        return reverse('trial:perito-detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('trials:perito-update', args=[self.pk])
+        return reverse('trial:perito-update', args=[self.pk])
     
 
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
@@ -93,6 +93,8 @@ ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecut
 class Equipo(models.Model):
     nombre = models.CharField(max_length=30)
 
+    def get_absolute_url(self):
+        return reverse('trial:equipo-detail', args=[self.pk])
 
 
 class Perfil(models.Model):

@@ -47,6 +47,13 @@ urlpatterns = [
     path('testigo/<int:testigo_pk>/create-apoyo/', login_required(views.ApoyoTestigoCreateView.as_view()), name='apoyo-testigo-create'),
 
     # Mi Perfil
-    path('perfil/', views.UserPerfilView.as_view(), name='user-perfil'),
+    path('perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
+
+    # Equipo CRUD
+    path('equipo/', login_required(views.EquipoListView.as_view()), name='equipo-list'),
+    path('equipo/create/', login_required(views.EquipoCreateView.as_view()), name='equipo-create'),
+    path('equipo/<int:pk>/', login_required(views.EquipoDetailView.as_view()), name='equipo-detail'),
+    path('equipo/<int:pk>/update/', login_required(views.EquipoUpdateView.as_view()), name='equipo-update'),
+    path('equipo/<int:pk>/delete/', login_required(views.EquipoDeleteView.as_view()), name='equipo-delete'),
 
 ]

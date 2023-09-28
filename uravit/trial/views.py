@@ -10,6 +10,7 @@ from .models import (
     Perito,
     Perfil,
     Apoyo,
+    Equipo,
 )
 from django.views.generic.edit import (
     CreateView,
@@ -255,3 +256,31 @@ class UserPerfilView(TemplateView):
             perfil = None
 
         return context
+    
+
+class EquipoCreateView(CreateView):
+    template_name = 'trial/equipo/equipo_form.html'
+    model = Equipo
+    fields = '__all__'
+
+class EquipoDetailView(DetailView):
+    template_name = 'trial/equipo/equipo_detail.html'
+    model = Equipo
+    context_object_name = 'equipo'
+
+class EquipoListView(ListView):
+    template_name = 'trial/equipo/equipo_list.html'
+    model = Equipo
+    context_object_name = 'equipos'
+
+class EquipoUpdateView(UpdateView):
+    template_name = 'trial/equipo/equipo_form.html'
+    model = Equipo
+    fields = '__all__'
+
+class EquipoDeleteView(DeleteView):
+    template_name = 'trial/equipo/equipo_confirm_delete.html'
+    model = Equipo
+    context_object_name = 'equipo'
+    success_url = reverse_lazy('trial:equipo-list')
+    

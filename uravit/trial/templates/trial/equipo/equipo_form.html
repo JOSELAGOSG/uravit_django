@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if equipo.pk %}
+    Editar Equipo: {{ equipo.nombre }}
+  {% else %}
+    Crear Equipo
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">
+    {% if equipo.pk %}
+      Editar Equipo: {{ equipo.nombre }}
+    {% else %}
+      Crear Equipo
+    {% endif %}
+  </h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'trial:equipo-list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

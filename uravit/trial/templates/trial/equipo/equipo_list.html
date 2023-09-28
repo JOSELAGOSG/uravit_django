@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Equipos{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Lista de Equipos</h1>
+
+  <!-- Botón para crear un nuevo equipo -->
+  <a href="{% url 'trial:equipo-create' %}" class="btn btn-primary mt-3">Crear Nuevo Equipo</a>
+
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for equipo in equipos %}
+        <tr>
+          <td>{{ equipo.nombre }}</td>
+          <td>
+            <a href="{% url 'trial:equipo-detail' equipo.pk %}" class="btn btn-info btn-sm">Detalles</a>
+            <!-- Agrega más acciones si es necesario -->
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="2">No hay equipos registrados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
