@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Apoyo{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Detalle de Apoyo</h1>
+
+  <table class="table table-bordered mt-4">
+    <tbody>
+      <tr>
+        <th>Tipo de Apoyo:</th>
+        <td>{{ apoyo.get_tipo_display }}</td>
+      </tr>
+      <tr>
+        <th>Equipo a Cargo:</th>
+        <td>{{ apoyo.equipo_a_cargo.nombre }}</td>
+      </tr>
+      <tr>
+        <th>Estado:</th>
+        <td>
+          <span class="{% if apoyo.estado == 'so' %}text-warning{% elif apoyo.estado == 'ep' %}text-success{% elif apoyo.estado == 'ej' %}text-success{% endif %}">
+            {{ apoyo.get_estado_display }}
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Descripción:</th>
+        <td>{{ apoyo.descripcion }}</td>
+      </tr>
+      <!-- Agrega más campos específicos según el tipo de apoyo -->
+    </tbody>
+  </table>
+
+  <!-- Botones para editar y eliminar -->
+  <div class="mt-3">
+    <a href="#" class="btn btn-primary">Editar</a>
+    <a href="#" class="btn btn-danger">Eliminar</a>
+  </div>
+</div>
+{% endblock %}

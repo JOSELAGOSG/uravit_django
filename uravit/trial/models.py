@@ -136,3 +136,6 @@ class Apoyo(models.Model):
     def clean(self):
         if self.victima and self.testigo:
             raise ValidationError("Un apoyo no puede estar relacionado tanto con una víctima como con un testigo al mismo tiempo.")
+        
+    def get_absolute_url(self):
+        return reverse('trial:apoyo-detail', args=[self.pk])
