@@ -22,7 +22,6 @@ from django.views.generic import (
     DetailView,
     TemplateView,
 )
-from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
 
@@ -237,7 +236,37 @@ class ApoyoTestigoCreateView(CreateView):
         self.object.save()
         return redirect(self.object.testigo.get_absolute_url())
     
+class ApoyoDetailView(DetailView):
+    template_name = 'trial/apoyo/apoyo_detail.html'
+    model = Apoyo
+    context_object_name = 'apoyo'
 
+class ApoyoListView(ListView):
+    template_name = 'trial/apoyo/apoyo_list.html'
+    model = Apoyo
+    context_object_name = 'apoyos'
+
+class ApoyoVictimaDeleteView(DeleteView):
+    template_name = 'trial/apoyo/apoyo_confirm_delete.html'
+    model = Apoyo
+    context_object_name = 'apoyo'
+    
+    def get_success_url(self):
+        apoyo = self.object 
+        victima_pk = apoyo.victima.pk
+        return reverse_lazy('victima-detail', kwargs={'pk': victima_pk})
+
+class ApoyoTestigoDeleteView(DeleteView):
+    template_name = 'trial/apoyo/apoyo_confirm_delete.html'
+    model = Apoyo
+    context_object_name = 'apoyo'
+    
+    def get_success_url(self):
+        apoyo = self.object 
+        testigo_pk = apoyo.testigo.pk
+        return reverse_lazy('testigo-detail', kwargs={'pk': testigo_pk})
+
+# Mi Perfil Detail
 @method_decorator(login_required, name='dispatch')
 class UserPerfilView(TemplateView):
     template_name = 'trial/user/user_detail.html'
@@ -257,7 +286,7 @@ class UserPerfilView(TemplateView):
 
         return context
     
-
+# Equipo CRUD
 class EquipoCreateView(CreateView):
     template_name = 'trial/equipo/equipo_form.html'
     model = Equipo

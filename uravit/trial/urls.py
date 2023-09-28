@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 app_name = 'trial'
@@ -40,11 +41,17 @@ urlpatterns = [
     path('perfil/<int:pk>/update/', login_required(views.PerfilUpdateView.as_view()), name='perfil-update'),
     path('perfil/<int:pk>/delete/', login_required(views.PerfilDeleteView.as_view()), name='perfil-delete'),
 
-    # Apoyo Victima CRUD
+    # Apoyo Victima Create
     path('victima/<int:victima_pk>/create-apoyo/', login_required(views.ApoyoVictimaCreateView.as_view()), name='apoyo-victima-create'),
 
-    # Apoyo Testigo CRUD
+    # Apoyo Testigo Create
     path('testigo/<int:testigo_pk>/create-apoyo/', login_required(views.ApoyoTestigoCreateView.as_view()), name='apoyo-testigo-create'),
+
+    # Apoyo
+    path('apoyo/', views.ApoyoListView.as_view(), name='apoyo-list'),
+    path('apoyo/<int:pk>/', views.ApoyoDetailView.as_view(), name='apoyo-detail'),
+    path('apoyo/<int:pk>/v_delete/', views.ApoyoVictimaDeleteView.as_view(), name='apoyo-victima-delete'),
+    path('apoyo/<int:pk>/t_delete/', views.ApoyoTestigoDeleteView.as_view(), name='apoyo-testigo-delete'),
 
     # Mi Perfil
     path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
