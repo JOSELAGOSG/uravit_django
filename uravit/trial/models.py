@@ -96,6 +96,8 @@ class Equipo(models.Model):
     def get_absolute_url(self):
         return reverse('trial:equipo-detail', args=[self.pk])
 
+    def __str__(self):
+        return self.nombre
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, related_name='perfil', on_delete=models.CASCADE)

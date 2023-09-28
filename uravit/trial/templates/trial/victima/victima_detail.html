@@ -40,7 +40,7 @@
       {% for apoyo in victima.apoyos.all %}
       <tr>
         <td>{{ apoyo.get_tipo_display }}</td>
-        <td>{{ apoyo.get_equipo_a_cargo_display }}</td>
+        <td>{{ apoyo.equipo_a_cargo.nombre }}</td>
         <td>
           <span class="{% if apoyo.estado == 'so' %}text-warning{% elif apoyo.estado == 'ep' %}text-success{% elif apoyo.estado == 'ej' %}text-success{% endif %}">
             {{ apoyo.get_estado_display }}

@@ -47,7 +47,7 @@ urlpatterns = [
     path('testigo/<int:testigo_pk>/create-apoyo/', login_required(views.ApoyoTestigoCreateView.as_view()), name='apoyo-testigo-create'),
 
     # Mi Perfil
-    path('perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
+    path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
 
     # Equipo CRUD
     path('equipo/', login_required(views.EquipoListView.as_view()), name='equipo-list'),
