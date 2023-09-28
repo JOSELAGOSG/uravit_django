@@ -27,6 +27,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.utils.decorators import method_decorator
 
+from django.core.exceptions import ObjectDoesNotExist
 
 
 #Juicio Views
@@ -245,6 +246,24 @@ class ApoyoListView(ListView):
     template_name = 'trial/apoyo/apoyo_list.html'
     model = Apoyo
     context_object_name = 'apoyos'
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff or user.is_superuser:
+            queryset = Apoyo.objects.all()
+        else:
+            try:
+                perfil = Perfil.objects.get(usuario=user)
+            except ObjectDoesNotExist:
+                perfil = None
+                
+            if perfil:
+                equipo = perfil.equipo
+                queryset = Apoyo.objects.filter(equipo_a_cargo=equipo)
+            else:
+                queryset = Apoyo.objects.none()  # No hay perfil, por lo tanto, no se muestra nada
+        return queryset
+
 
 class ApoyoVictimaDeleteView(DeleteView):
     template_name = 'trial/apoyo/apoyo_confirm_delete.html'

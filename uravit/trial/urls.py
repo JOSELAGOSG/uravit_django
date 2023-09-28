@@ -10,7 +10,7 @@ urlpatterns = [
     path('', login_required(views.JuicioListView.as_view()), name='juicio-list'),
 
     # Juicio CRUD
-    path('juicio/create/', login_required(views.JuicioCreateView.as_view()), name='juicio-create'),
+    path('juicio/create/', staff_member_required(views.JuicioCreateView.as_view()), name='juicio-create'),
     path('juicio/<int:pk>/', login_required(views.JuicioDetailView.as_view()), name='juicio-detail'),
     path('juicio/<int:pk>/update/', login_required(views.JuicioUpdateView.as_view()), name='juicio-update'),
     path('juicio/<int:pk>/delete/', login_required(views.JuicioDeleteView.as_view()), name='juicio-delete'),
