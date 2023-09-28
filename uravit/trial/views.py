@@ -19,7 +19,13 @@ from django.views.generic.edit import (
 from django.views.generic import (
     ListView,
     DetailView,
+    TemplateView,
 )
+from django.contrib.auth.models import User
+
+from django.contrib.auth.decorators import login_required
+
+from django.utils.decorators import method_decorator
 
 
 
@@ -163,6 +169,7 @@ class PerfilCreateView(CreateView):
     template_name = 'trial/perfil/perfil_form.html'
     model = Perfil
     fields = '__all__'
+    success_url = reverse_lazy('trial:perfil-list')
 
 class PerfilDetailView(DetailView):
     template_name = 'trial/perfil/perfil_detail.html'
@@ -228,3 +235,23 @@ class ApoyoTestigoCreateView(CreateView):
         self.object.testigo = testigo
         self.object.save()
         return redirect(self.object.testigo.get_absolute_url())
+    
+
+@method_decorator(login_required, name='dispatch')
+class UserPerfilView(TemplateView):
+    template_name = 'trial/user/user_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['user'] = user
+
+        try:
+            perfil = Perfil.objects.get(usuario=user)
+            context['perfil'] = perfil
+            apoyos = Apoyo.objects.filter(equipo_a_cargo=perfil.equipo)
+            context['apoyos'] = apoyos
+        except Perfil.DoesNotExist:
+            perfil = None
+
+        return context

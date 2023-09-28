@@ -46,4 +46,7 @@ urlpatterns = [
     # Apoyo Testigo CRUD
     path('testigo/<int:testigo_pk>/create-apoyo/', login_required(views.ApoyoTestigoCreateView.as_view()), name='apoyo-testigo-create'),
 
+    # Mi Perfil
+    path('perfil/', views.UserPerfilView.as_view(), name='user-perfil'),
+
 ]

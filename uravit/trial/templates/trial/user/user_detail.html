@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Mi Perfil</h1>
+  <table class="table table-bordered mt-4">
+    <tbody>
+      <tr>
+        <th>Nombre de Usuario:</th>
+        <td>{{ user.username }}</td>
+      </tr>
+      <tr>
+        <th>Nombre:</th>
+        <td>{{ user.first_name }}</td>
+      </tr>
+      <tr>
+        <th>Apellido:</th>
+        <td>{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <th>Correo Electrónico:</th>
+        <td>{{ user.email }}</td>
+      </tr>
+      <!-- Agrega más atributos relacionados al usuario si es necesario -->
+    </tbody>
+  </table>
+
+  {% if perfil %}
+  <h2 class="mt-3">Apoyos Relacionados</h2>
+  <ul>
+    {% for apoyo in apoyos %}
+    <li>{{ apoyo }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <a href="{% url 'user_update' user.id %}" class="btn btn-primary">Editar Usuario</a>
+</div>
+{% endblock %}
+
