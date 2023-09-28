@@ -29,6 +29,7 @@ from django.utils.decorators import method_decorator
 
 from django.core.exceptions import ObjectDoesNotExist
 
+from django.views.defaults import permission_denied
 
 #Juicio Views
 
@@ -242,6 +243,25 @@ class ApoyoDetailView(DetailView):
     model = Apoyo
     context_object_name = 'apoyo'
 
+    def get(self, request, *args, **kwargs):
+        apoyo = self.get_object()
+
+        try:
+            perfil = request.user.perfil
+        except Exception:
+            perfil = None
+        
+        if apoyo.equipo_a_cargo != perfil.equipo:
+            return permission_denied(request, exception="Acceso Prohibido")
+        
+        return super().get(request, *args, **kwargs)
+
+'''
+    ApoyoListView entrega:
+        -Todos los apoyos a los usuarios staff y superusuarios
+        -Los apoyos relacionados al equipo del usuario si es que el usuario tiene perfil
+        -Nada si es que el usuario no tiene perfil
+'''
 class ApoyoListView(ListView):
     template_name = 'trial/apoyo/apoyo_list.html'
     model = Apoyo
@@ -256,7 +276,7 @@ class ApoyoListView(ListView):
                 perfil = Perfil.objects.get(usuario=user)
             except ObjectDoesNotExist:
                 perfil = None
-                
+
             if perfil:
                 equipo = perfil.equipo
                 queryset = Apoyo.objects.filter(equipo_a_cargo=equipo)
