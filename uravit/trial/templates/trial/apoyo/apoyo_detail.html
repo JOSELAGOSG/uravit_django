@@ -12,7 +12,8 @@
         <th>Tipo de Apoyo:</th>
         <td>{{ apoyo.get_tipo_display }}</td>
       </tr>
-      {% if apoyo.tipo == 'tl'%}
+      {% if apoyo.tipo == 'tl' %}
+      <!-- Campos específicos para Traslado -->
       <tr>
         <th>Tipo Traslado:</th>
         <td>{{ apoyo.get_traslado_tipo_display }}</td>
@@ -22,16 +23,19 @@
         <td>{{ apoyo.get_traslado_vehiculo_display }}</td>
       </tr>
       {% elif apoyo.tipo == 'et' %}
+      <!-- Campos específicos para Estadía -->
       <tr>
         <th>Con Alimentación:</th>
         <td>{{ apoyo.estadia_con_alimentacion|yesno:"Sí,No" }}</td>
       </tr>
       {% elif apoyo.tipo == 'am' %}
+      <!-- Campos específicos para Asistencia Médica -->
       <tr>
         <th>Tipo Asistencia:</th>
-        <td>{{ apoyo.get_display_asistencia_medica_tipo }}</td>
+        <td>{{ apoyo.get_asistencia_medica_tipo_display }}</td>
       </tr>
       {% elif apoyo.tipo == 'td' %}
+      <!-- Campos específicos para Traductor -->
       <tr>
         <th>Idioma:</th>
         <td>{{ apoyo.traductor_idioma }}</td>
@@ -55,6 +59,25 @@
       </tr>      
     </tbody>
   </table>
+
+  <!-- Datos del Juicio -->
+  {% if apoyo.victima %}
+  <h2 class="mt-3">Datos de la Víctima</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Nombre de la Víctima:</strong> {{ apoyo.victima.nombre }}</li>
+    <!-- Agregar más campos de la víctima si es necesario -->
+  </ul>
+  <a href="{{ apoyo.victima.get_absolute_url }}" class="btn btn-primary mt-3">Ver Detalles de Víctima</a>
+  {% endif %}
+
+  {% if apoyo.testigo %}
+  <h2 class="mt-3">Datos del Testigo</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Nombre del Testigo:</strong> {{ apoyo.testigo.nombre }}</li>
+    <!-- Agregar más campos del testigo si es necesario -->
+  </ul>
+  <a href="{{ apoyo.testigo.get_absolute_url }}" class="btn btn-primary mt-3">Ver Detalles de Testigo</a>
+  {% endif %}
 
   <!-- Botones para editar y eliminar -->
   <div class="mt-3">
