@@ -61,9 +61,9 @@ class Testigo(Persona):
 class Victima(Persona):
     juicio = models.ForeignKey(Juicio, related_name="victimas", on_delete=models.CASCADE )
 
-    edad = models.IntegerField(null=True)
+    edad = models.IntegerField(null=True, blank=True)
     bool_pauta_lista = models.BooleanField(default=False)
-    link_pauta_necesidades = models.URLField(null=True)
+    link_pauta_necesidades = models.URLField(null=True, blank=True)
     
     def __str__(self):
         return f'{self.nombre}'
@@ -74,6 +74,9 @@ class Victima(Persona):
     def get_update_url(self):
         return reverse('trial:victima-update', args=[self.pk])
 
+    def get_delete_url(self):
+        return reverse('trial:victima-delete', args=[self.pk])
+    
 class Perito(Persona):
     juicio = models.ForeignKey(Juicio, related_name="peritos", on_delete=models.CASCADE )
     institucion = models.CharField(max_length=30)

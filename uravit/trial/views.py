@@ -128,7 +128,7 @@ class VictimaDeleteView(DeleteView):
     def get_success_url(self):
         victima = self.object 
         juicio_pk = victima.juicio.pk
-        return reverse_lazy('juicio-detail', kwargs={'pk': juicio_pk})
+        return reverse_lazy('trial:juicio-detail', kwargs={'pk': juicio_pk})
 
 
 #PERITO Views
