@@ -251,7 +251,7 @@ class ApoyoDetailView(DetailView):
         except Exception:
             perfil = None
         
-        if apoyo.equipo_a_cargo != perfil.equipo:
+        if not request.user.is_staff and apoyo.equipo_a_cargo != perfil.equipo:
             return permission_denied(request, exception="Acceso Prohibido")
         return super().get(request, *args, **kwargs)
 
