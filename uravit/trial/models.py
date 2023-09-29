@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 
 class Juicio(models.Model):
     ruc = models.CharField(max_length=25)
-    auto_apertura = models.CharField(max_length=200, null=True)
+    auto_apertura = models.CharField(max_length=200, null=True, blank=True)
     fecha_juicio_oral = models.DateTimeField()
     fiscal = models.CharField(max_length=30, null=True)
 
