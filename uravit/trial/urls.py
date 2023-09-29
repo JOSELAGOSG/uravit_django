@@ -11,9 +11,9 @@ urlpatterns = [
 
     # Juicio CRUD
     path('juicio/create/', staff_member_required(views.JuicioCreateView.as_view()), name='juicio-create'),
-    path('juicio/<int:pk>/', login_required(views.JuicioDetailView.as_view()), name='juicio-detail'),
-    path('juicio/<int:pk>/update/', login_required(views.JuicioUpdateView.as_view()), name='juicio-update'),
-    path('juicio/<int:pk>/delete/', login_required(views.JuicioDeleteView.as_view()), name='juicio-delete'),
+    path('juicio/<int:pk>/', staff_member_required(views.JuicioDetailView.as_view()), name='juicio-detail'),
+    path('juicio/<int:pk>/update/', staff_member_required(views.JuicioUpdateView.as_view()), name='juicio-update'),
+    path('juicio/<int:pk>/delete/', staff_member_required(views.JuicioDeleteView.as_view()), name='juicio-delete'),
 
     # Victima CRUD
     path('juicio/<int:juicio_pk>/create-victima/', login_required(views.VictimaCreateView.as_view()), name='victima-create'),
