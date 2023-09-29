@@ -15,11 +15,11 @@
     <li class="list-group-item"><strong>Dirección:</strong> {{ victima.direccion }}</li>
     <li class="list-group-item"><strong>Correo:</strong> {{ victima.correo }}</li>
     <li class="list-group-item"><strong>Teléfono:</strong> {{ victima.telefono }}</li>
-    <li class="list-group-item"><strong>Notificada:</strong> {{ victima.bool_esta_notificada }}</li>
+    <li class="list-group-item"><strong>Notificada:</strong> {{ victima.bool_esta_notificada|yesno:"Sí,No" }}</li>
     <li class="list-group-item"><strong>Observaciones:</strong> {{ victima.observaciones }}</li>
     <li class="list-group-item"><strong>Juicio:</strong> {{ victima.juicio }}</li>
     <li class="list-group-item"><strong>Edad:</strong> {{ victima.edad }}</li>
-    <li class="list-group-item"><strong>Pauta Lista:</strong> {{ victima.bool_pauta_lista }}</li>
+    <li class="list-group-item"><strong>Pauta Lista:</strong> {{ victima.bool_pauta_lista|yesno:"Sí,No" }}</li>
     <li class="list-group-item"><strong>Link Pauta Necesidades:</strong> {{ victima.link_pauta_necesidades }}</li>
   </ul>
 
@@ -31,18 +31,17 @@
   <table class="table table-bordered mt-3" id="apoyos-table">
     <thead>
       <tr>
-        <th></th>
         <th>Tipo de Apoyo</th>
         <th>Equipo a Cargo</th>
         <th>Estado</th>
         <th>Descripción</th>
+        <th></th>
         <!-- Agregar más encabezados de columnas según sea necesario -->
       </tr>
     </thead>
     <tbody>
       {% for apoyo in victima.apoyos.all %}
       <tr>
-        <td><a href="{{ apoyo.get_absolute_url }}">Ir al apoyo</a></td>
         <td>{{ apoyo.get_tipo_display }}</td>
         <td>{{ apoyo.equipo_a_cargo.nombre }}</td>
         <td>
@@ -51,7 +50,7 @@
           </span>
         </td>
         <td>{{ apoyo.descripcion }}</td>
-        <!-- Agregar más datos de apoyo según sea necesario -->
+        <td><a href="{% url 'trial:apoyo-detail' apoyo.pk %}" class="btn btn-info btn-sm">Detalle</a></td>
       </tr>
       
       {% empty %}

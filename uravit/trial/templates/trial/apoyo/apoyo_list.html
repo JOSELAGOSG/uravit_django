@@ -13,8 +13,6 @@
         <th>Equipo a Cargo</th>
         <th>Estado</th>
         <th>Descripción</th>
-        <!-- Agregar más encabezados de columnas según sea necesario -->
-        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -28,11 +26,8 @@
           </span>
         </td>
         <td>{{ apoyo.descripcion }}</td>
-        <!-- Agregar más datos de apoyo según sea necesario -->
         <td>
-          <a href="{% url 'trial:apoyo-detail' apoyo.pk %}" class="btn btn-info btn-sm">Detalles</a>
-          <a href="#" class="btn btn-primary btn-sm">Editar</a>
-          <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+          <a href="{% url 'trial:apoyo-detail' apoyo.pk %}" class="btn btn-info btn-sm">Detalle</a>
         </td>
       </tr>
       {% empty %}

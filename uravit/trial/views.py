@@ -183,7 +183,7 @@ class PerfilUpdateView(UpdateView):
     model = Perfil
     fields = '__all__'
     success_url = reverse_lazy('trial:perfil-list')
-    
+
 class PerfilDeleteView(DeleteView):
     template_name = 'trial/perfil/perfil_confirm_delete.html'
     model = Perfil
@@ -279,6 +279,20 @@ class ApoyoListView(ListView):
                 queryset = Apoyo.objects.none()  # No hay perfil, por lo tanto, no se muestra nada
         return queryset
 
+class ApoyoUpdateView(UpdateView):
+    template_name = 'trial/apoyo/apoyo_form.html'
+    model = Apoyo
+    fields = [
+        'tipo', 
+        'equipo_a_cargo',
+        'estado', 
+        'descripcion', 
+        'traslado_tipo',
+        'traslado_vehiculo',
+        'estadia_con_alimentacion',
+        'asistencia_medica_tipo',
+        'traductor_idioma'
+        ]
 
 class ApoyoEstadoUpdateView(UpdateView):
     template_name = 'trial/apoyo/apoyo_estado_update.html'
@@ -293,7 +307,7 @@ class ApoyoVictimaDeleteView(DeleteView):
     def get_success_url(self):
         apoyo = self.object 
         victima_pk = apoyo.victima.pk
-        return reverse_lazy('victima-detail', kwargs={'pk': victima_pk})
+        return reverse_lazy('trial:victima-detail', kwargs={'pk': victima_pk})
 
 class ApoyoTestigoDeleteView(DeleteView):
     template_name = 'trial/apoyo/apoyo_confirm_delete.html'
@@ -303,7 +317,7 @@ class ApoyoTestigoDeleteView(DeleteView):
     def get_success_url(self):
         apoyo = self.object 
         testigo_pk = apoyo.testigo.pk
-        return reverse_lazy('testigo-detail', kwargs={'pk': testigo_pk})
+        return reverse_lazy('trial:testigo-detail', kwargs={'pk': testigo_pk})
 
 # Mi Perfil Detail
 @method_decorator(login_required, name='dispatch')

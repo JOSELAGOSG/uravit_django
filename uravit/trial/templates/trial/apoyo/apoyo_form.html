@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Crear Apoyo{% endblock %}
+{% block title %}Formulario Apoyo{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h2 class="mt-3">Crear Apoyo</h2>
+  <h2 class="mt-3">Formulario Apoyo</h2>
   <form method="post">
     {% csrf_token %}
     <div class="form-group">
-      <label for="{{ form.tipo.id_for_label }}">Tipo de Apoyo:</label>
+      <label for="{{ form.tipo.id_for_label }}"><strong>Tipo de Apoyo:</label>
       {{ form.tipo }}
     </div>
  

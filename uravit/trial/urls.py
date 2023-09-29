@@ -47,11 +47,12 @@ urlpatterns = [
     path('testigo/<int:testigo_pk>/create-apoyo/', login_required(views.ApoyoTestigoCreateView.as_view()), name='apoyo-testigo-create'),
 
     # Apoyo
-    path('apoyo/', views.ApoyoListView.as_view(), name='apoyo-list'),
-    path('apoyo/<int:pk>/', views.ApoyoDetailView.as_view(), name='apoyo-detail'),
-    path('apoyo/<int:pk>/v-delete/', views.ApoyoVictimaDeleteView.as_view(), name='apoyo-victima-delete'),
-    path('apoyo/<int:pk>/t-delete/', views.ApoyoTestigoDeleteView.as_view(), name='apoyo-testigo-delete'),
-    path('apoyo/<int:pk>/estado-update/', views.ApoyoEstadoUpdateView.as_view(), name='apoyo-estado-update'),
+    path('apoyo/', login_required(views.ApoyoListView.as_view()), name='apoyo-list'),
+    path('apoyo/<int:pk>/', login_required(views.ApoyoDetailView.as_view()), name='apoyo-detail'),
+    path('apoyo/<int:pk>/update/', login_required(views.ApoyoUpdateView.as_view()), name='apoyo-update'),
+    path('apoyo/<int:pk>/v-delete/', login_required(views.ApoyoVictimaDeleteView.as_view()), name='apoyo-victima-delete'),
+    path('apoyo/<int:pk>/t-delete/', login_required(views.ApoyoTestigoDeleteView.as_view()), name='apoyo-testigo-delete'),
+    path('apoyo/<int:pk>/estado-update/', login_required(views.ApoyoEstadoUpdateView.as_view()), name='apoyo-estado-update'),
     # Mi Perfil
     path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
 
