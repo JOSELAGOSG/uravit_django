@@ -13,13 +13,18 @@
       <tr>
         <th>Usuario</th>
         <th>Equipo</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       {% for perfil in perfiles %}
         <tr>
-          <td><a href="{{ perfil.usuario.get_absolute_url }}">{{ perfil.usuario.username }}</a></td>
-          <td>{{ perfil.get_equipo_display }}</td>
+          <td><a href="#">{{ perfil.usuario.username }}</a></td>
+          <td><a href="{{ perfil.equipo.get_absolute_url }}">{{ perfil.equipo }}</a></td>
+          <td>
+            <a href="{{ perfil.get_update_url }}" class="btn btn-primary btn-sm" >Editar</a>
+            <a href="{{ perfil.get_delete_url }}" class="btn btn-danger btn-sm" >Eliminar</a>
+          </td>
         </tr>
       {% empty %}
         <tr>

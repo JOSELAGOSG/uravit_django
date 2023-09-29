@@ -107,10 +107,21 @@ class Equipo(models.Model):
     def __str__(self):
         return self.nombre
 
+    def get_update_url(self):
+        return reverse('trial:equipo-update', args=[self.pk])
+
+    def get_delete_url(self):
+        return reverse('trial:equipo-delete', args=[self.pk]) 
+
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, related_name='perfil', on_delete=models.CASCADE)
     equipo = models.ForeignKey(Equipo, related_name='perfiles', on_delete=models.CASCADE)
 
+    def get_update_url(self):
+        return reverse('trial:perfil-update', args=[self.pk])
+    
+    def get_delete_url(self):
+        return reverse('trial:perfil-delete', args=[self.pk])
 
 class Apoyo(models.Model):
     # Choices necesarios para algunos campos

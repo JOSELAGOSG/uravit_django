@@ -37,7 +37,6 @@ urlpatterns = [
     # Perfil CRUD
     path('perfil/create/', login_required(views.PerfilCreateView.as_view()), name='perfil-create'),
     path('perfil/', login_required(views.PerfilListView.as_view()), name='perfil-list'),
-    path('perfil/<int:pk>/', login_required(views.PerfilDetailView.as_view()), name='perfil-detail'),
     path('perfil/<int:pk>/update/', login_required(views.PerfilUpdateView.as_view()), name='perfil-update'),
     path('perfil/<int:pk>/delete/', login_required(views.PerfilDeleteView.as_view()), name='perfil-delete'),
 
