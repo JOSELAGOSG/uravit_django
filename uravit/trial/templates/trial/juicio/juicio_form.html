@@ -1,14 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}Crear Nuevo Juicio{% endblock %}
+{% block title %}Formulario Juicio{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h2 class="mt-3">Formulario Juicio</h2>
-  <form method="post" class="mt-3">
+  <h1 class="mt-3">Formulario Juicio</h1>
+
+  <form method="post" enctype="multipart/form-data" class="my-4">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Ok</button>
+
+    <div class="form-group row">
+      <label for="{{ form.ruc.id_for_label }}" class="col-sm-3 col-form-label"><strong>RUC:</strong></label>
+      <div class="col-sm-9">
+        {{ form.ruc }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="{{ form.auto_apertura.id_for_label }}" class="col-sm-3 col-form-label"><strong>Auto Apertura:</strong></label>
+      <div class="col-sm-9">
+        {{ form.auto_apertura }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="{{ form.fecha_juicio_oral.id_for_label }}" class="col-sm-3 col-form-label"><strong>Fecha de Juicio Oral:</strong></label>
+      <div class="col-sm-9">
+        {{ form.fecha_juicio_oral }}
+        <small class="form-text text-muted">Formato: AAAA-MM-DD HH:MM</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="{{ form.fiscal.id_for_label }}" class="col-sm-3 col-form-label"><strong>Fiscal:</strong></label>
+      <div class="col-sm-9">
+        {{ form.fiscal }}
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-9 offset-sm-3">
+        <button type="submit" class="btn btn-primary">Guardar Juicio</button>
+      </div>
+    </div>
   </form>
 </div>
 {% endblock %}
+
