@@ -17,18 +17,6 @@
         <td>{{ perfil.equipo.nombre }}</td>
         {% endif %}
       </tr>
-      <tr>
-        <th>Nombre:</th>
-        <td>{{ user.first_name }}</td>
-      </tr>
-      <tr>
-        <th>Apellido:</th>
-        <td>{{ user.last_name }}</td>
-      </tr>
-      <tr>
-        <th>Correo Electrónico:</th>
-        <td>{{ user.email }}</td>
-      </tr>
       <!-- Agrega más atributos relacionados al usuario si es necesario -->
     </tbody>
   </table>
@@ -60,7 +48,7 @@
       </tr>
       {% empty %}
       <tr>
-        <td colspan="4">No hay apoyos registrados para esta víctima.</td>
+        <td colspan="4">No hay apoyos registrados para este perfil.</td>
       </tr>
       {% endfor %}
     </tbody>
