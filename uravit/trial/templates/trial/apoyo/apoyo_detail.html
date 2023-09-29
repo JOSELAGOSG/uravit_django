@@ -65,18 +65,44 @@
   <h2 class="mt-3">Datos de la Víctima</h2>
   <ul class="list-group">
     <li class="list-group-item"><strong>Nombre de la Víctima:</strong> {{ apoyo.victima.nombre }}</li>
-    <!-- Agregar más campos de la víctima si es necesario -->
+    <li class="list-group-item"><strong>Rut:</strong> {{ apoyo.victima.rut }}</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ apoyo.victima.edad }}</li>
+    <li class="list-group-item"><strong>Dirección:</strong> {{ apoyo.victima.direccion }}</li>
+    <li class="list-group-item"><strong>Correo:</strong> {{ apoyo.victima.correo }}</li>
+    <li class="list-group-item"><strong>¿Está Notificada?:</strong> {{ apoyo.victima.bool_esta_notificada|yesno:"Sí,No" }}</li>
+    <li class="list-group-item"><strong>¿Pauta Lista?:</strong> {{ apoyo.victima.bool_pauta_lista|yesno:"Sí,No" }}</li>
+    <li class="list-group-item"><strong>Pauta Necesidades:</strong> {{ apoyo.victima.link_pauta_necesidades }}</li>
+    <li class="list-group-item"><strong>Observaciones:</strong> {{ apoyo.victima.observaciones }}</li>
   </ul>
-  <a href="{{ apoyo.victima.get_absolute_url }}" class="btn btn-primary mt-3">Ver Detalles de Víctima</a>
+  <h2 class="mt-3">Datos del Juicio</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>RUC:</strong>{{ apoyo.victima.juicio.ruc }}</li>
+    <li class="list-group-item"><strong>Auto Apertura:</strong>{{ apoyo.victima.juicio.auto_apertura }}</li>
+    <li class="list-group-item"><strong>Fecha Juicio Oral:</strong>{{ apoyo.victima.juicio.fecha_juicio_oral }}</li>
+    <li class="list-group-item"><strong>Fiscal:</strong>{{ apoyo.victima.juicio.fiscal }}</li>
+  </ul>
   {% endif %}
 
   {% if apoyo.testigo %}
   <h2 class="mt-3">Datos del Testigo</h2>
   <ul class="list-group">
     <li class="list-group-item"><strong>Nombre del Testigo:</strong> {{ apoyo.testigo.nombre }}</li>
-    <!-- Agregar más campos del testigo si es necesario -->
+    <li class="list-group-item"><strong>Rut:</strong> {{ apoyo.testigo.rut }}</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ apoyo.testigo.edad }}</li>
+    <li class="list-group-item"><strong>Dirección:</strong> {{ apoyo.testigo.direccion }}</li>
+    <li class="list-group-item"><strong>Correo:</strong> {{ apoyo.testigo.correo }}</li>
+    <li class="list-group-item"><strong>¿Está Notificada?:</strong> {{ apoyo.testigo.bool_esta_notificada|yesno:"Sí,No" }}</li>
+    <li class="list-group-item"><strong>¿Pauta Lista?:</strong> {{ apoyo.testigo.bool_pauta_lista|yesno:"Sí,No" }}</li>
+    <li class="list-group-item"><strong>Pauta Necesidades:</strong> {{ apoyo.testigo.link_pauta_necesidades }}</li>
+    <li class="list-group-item"><strong>Observaciones:</strong> {{ apoyo.testigo.observaciones }}</li>
   </ul>
-  <a href="{{ apoyo.testigo.get_absolute_url }}" class="btn btn-primary mt-3">Ver Detalles de Testigo</a>
+  <h2 class="mt-3">Datos del Juicio</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>RUC:</strong>{{ apoyo.testigo.juicio.ruc }}</li>
+    <li class="list-group-item"><strong>Auto Apertura:</strong>{{ apoyo.testigo.juicio.auto_apertura }}</li>
+    <li class="list-group-item"><strong>Fecha Juicio Oral:</strong>{{ apoyo.testigo.juicio.fecha_juicio_oral }}</li>
+    <li class="list-group-item"><strong>Fiscal:</strong>{{ apoyo.testigo.juicio.fiscal }}</li>
+  </ul>
   {% endif %}
 
   <!-- Botones para editar y eliminar -->
