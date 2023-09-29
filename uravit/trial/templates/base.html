@@ -21,6 +21,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
+            {% if user.is_staff %}
             <!-- Sidebar -->
             <nav class="col-md-2 col-lg-2 d-md-block bg-primary sidebar">
                 <div class="position-sticky" style="height: 100vh;">
@@ -54,7 +55,20 @@
                     </ul>
                 </div>
             </nav>
-            
+            {% else %}
+            <nav class="col-md-2 col-lg-2 d-md-block bg-primary sidebar">
+                <div class="position-sticky" style="height: 100vh;">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'trial:apoyo-list' %}">
+                                <i class="fas fa-task"></i> Apoyos
+                            </a>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+            </nav>
+            {% endif %}
             <!-- Content -->
             <main class="col-md-10 col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

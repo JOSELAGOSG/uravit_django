@@ -7,9 +7,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 app_name = 'trial'
 
 urlpatterns = [
-    path('', login_required(views.JuicioListView.as_view()), name='juicio-list'),
-
+    path('', login_required(views.ApoyoListView.as_view()), name='home'),
     # Juicio CRUD
+    path('juicio/', staff_member_required(views.JuicioListView.as_view()), name='juicio-list'),
     path('juicio/create/', staff_member_required(views.JuicioCreateView.as_view()), name='juicio-create'),
     path('juicio/<int:pk>/', staff_member_required(views.JuicioDetailView.as_view()), name='juicio-detail'),
     path('juicio/<int:pk>/update/', staff_member_required(views.JuicioUpdateView.as_view()), name='juicio-update'),
