@@ -93,7 +93,7 @@ class TestigoDeleteView(DeleteView):
     def get_success_url(self):
         testigo = self.object
         juicio_pk = testigo.juicio.pk
-        return reverse_lazy('juicio-detail', kwargs={'pk': juicio_pk})
+        return reverse_lazy('trial:juicio-detail', kwargs={'pk': juicio_pk})
 
 
 #VICTIMA Views

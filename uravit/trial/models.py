@@ -33,9 +33,9 @@ class Juicio(models.Model):
 class Persona(models.Model):
     nombre = models.CharField(max_length=30)
     rut = models.CharField(max_length=30)
-    direccion = models.CharField (max_length=200)
-    correo = models.EmailField(null=True)
-    telefono = models.CharField(max_length=50, null=True)  # Arreglar para los constraints 
+    direccion = models.CharField (max_length=200, blank=True)
+    correo = models.EmailField(null=True, blank=True)
+    telefono = models.CharField(max_length=50, null=True, blank=True) 
     bool_esta_notificada = models.BooleanField(default=False)
     observaciones = models.TextField(null=True, blank=True)
 
@@ -45,7 +45,7 @@ class Persona(models.Model):
 
 class Testigo(Persona):
     juicio = models.ForeignKey(Juicio, related_name="testigos", on_delete=models.CASCADE )
-    edad = models.IntegerField(null=True)
+    edad = models.IntegerField(null=True, blank=True)
     bool_pauta_lista = models.BooleanField(default=False)
     link_pauta_necesidades = models.URLField(null=True, blank=True)
 
@@ -58,6 +58,9 @@ class Testigo(Persona):
     def get_update_url(self):
         return reverse('trial:testigo-update', args=[self.pk])
     
+    def get_delete_url(self):
+        return reverse('trial:testigo-delete', args=[self.pk])
+
 class Victima(Persona):
     juicio = models.ForeignKey(Juicio, related_name="victimas", on_delete=models.CASCADE )
 

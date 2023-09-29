@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Eliminación de Testigo{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-3">Confirmar Eliminación de Testigo</h1>
+
+  <p>¿Estás seguro de que deseas eliminar el testigo "{{ testigo.nombre }}"?</p>
+
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ testigo.juicio.get_absolute_url }}">
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{{ testigo.juicio.get_absolute_url }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}
