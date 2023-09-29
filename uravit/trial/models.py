@@ -93,6 +93,8 @@ class Perito(Persona):
     def get_update_url(self):
         return reverse('trial:perito-update', args=[self.pk])
     
+    def get_delete_url(self):
+        return reverse('trial:perito-delete', args=[self.pk])
 
 ESTADO_APOYO = [('so', 'Solicitado'), ('co', 'En Coordinación'), ('ej', 'Ejecutado')]
 
