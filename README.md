@@ -114,19 +114,19 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Detalle de Juicio
-- **URL:** `/juicio/<int:pk>/`
+- **URL:** `/juicio/id/`
 - **Vista:** `JuicioDetailView`
 - **Descripción:** Muestra los detalles de un juicio.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Juicio
-- **URL:** `/juicio/<int:pk>/update/`
+- **URL:** `/juicio/id/update/`
 - **Vista:** `JuicioUpdateView`
 - **Descripción:** Permite actualizar un juicio existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Juicio
-- **URL:** `/juicio/<int:pk>/delete/`
+- **URL:** `/juicio/id/delete/`
 - **Vista:** `JuicioDeleteView`
 - **Descripción:** Permite eliminar un juicio existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -140,19 +140,19 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Detalle de Víctima
-- **URL:** `/victima/<int:pk>/`
+- **URL:** `/victima/id/`
 - **Vista:** `VictimaDetailView`
 - **Descripción:** Muestra los detalles de una víctima.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Víctima
-- **URL:** `/victima/<int:pk>/update/`
+- **URL:** `/victima/id/update/`
 - **Vista:** `VictimaUpdateView`
 - **Descripción:** Permite actualizar los detalles de una víctima existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Víctima
-- **URL:** `/victima/<int:pk>/delete/`
+- **URL:** `/victima/id/delete/`
 - **Vista:** `VictimaDeleteView`
 - **Descripción:** Permite eliminar una víctima existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -166,19 +166,19 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Detalle de Testigo
-- **URL:** `/testigo/<int:pk>/`
+- **URL:** `/testigo/id/`
 - **Vista:** `TestigoDetailView`
 - **Descripción:** Muestra los detalles de un testigo.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Testigo
-- **URL:** `/testigo/<int:pk>/update/`
+- **URL:** `/testigo/id/update/`
 - **Vista:** `TestigoUpdateView`
 - **Descripción:** Permite actualizar los detalles de un testigo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Testigo
-- **URL:** `/testigo/<int:pk>/delete/`
+- **URL:** `/testigo/id/delete/`
 - **Vista:** `TestigoDeleteView`
 - **Descripción:** Permite eliminar un testigo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -192,19 +192,19 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Detalle de Perito
-- **URL:** `/perito/<int:pk>/`
+- **URL:** `/perito/id/`
 - **Vista:** `PeritoDetailView`
 - **Descripción:** Muestra los detalles de un perito.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Perito
-- **URL:** `/perito/<int:pk>/update/`
+- **URL:** `/perito/id/update/`
 - **Vista:** `PeritoUpdateView`
 - **Descripción:** Permite actualizar los detalles de un perito existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Perito
-- **URL:** `/perito/<int:pk>/delete/`
+- **URL:** `/perito/id/delete/`
 - **Vista:** `PeritoDeleteView`
 - **Descripción:** Permite eliminar un perito existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -224,13 +224,13 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Perfil
-- **URL:** `/perfil/<int:pk>/update/`
+- **URL:** `/perfil/id/update/`
 - **Vista:** `PerfilUpdateView`
 - **Descripción:** Permite actualizar los detalles de un perfil existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Perfil
-- **URL:** `/perfil/<int:pk>/delete/`
+- **URL:** `/perfil/id/delete/`
 - **Vista:** `PerfilDeleteView`
 - **Descripción:** Permite eliminar un perfil existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -238,7 +238,7 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 ## Apoyo Victima Create
 
 ### Crear Apoyo para Víctima
-- **URL:** `/victima/<int:victima_pk>/create-apoyo/`
+- **URL:** `/victima/id/create-apoyo/`
 - **Vista:** `ApoyoVictimaCreateView`
 - **Descripción:** Permite crear un nuevo apoyo para una víctima.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -246,7 +246,7 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 ## Apoyo Testigo Create
 
 ### Crear Apoyo para Testigo
-- **URL:** `/testigo/<int:testigo_pk>/create-apoyo/`
+- **URL:** `/testigo/id/create-apoyo/`
 - **Vista:** `ApoyoTestigoCreateView`
 - **Descripción:** Permite crear un nuevo apoyo para un testigo.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -260,31 +260,31 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión.
 
 ### Detalle de Apoyo
-- **URL:** `/apoyo/<int:pk>/`
+- **URL:** `/apoyo/id/`
 - **Vista:** `ApoyoDetailView`
 - **Descripción:** Muestra los detalles de un apoyo.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Apoyo
-- **URL:** `/apoyo/<int:pk>/update/`
+- **URL:** `/apoyo/id/update/`
 - **Vista:** `ApoyoUpdateView`
 - **Descripción:** Permite actualizar los detalles de un apoyo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Apoyo de Víctima
-- **URL:** `/apoyo/<int:pk>/v-delete/`
+- **URL:** `/apoyo/id/v-delete/`
 - **Vista:** `ApoyoVictimaDeleteView`
 - **Descripción:** Permite eliminar un apoyo de víctima existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Apoyo de Testigo
-- **URL:** `/apoyo/<int:pk>/t-delete/`
+- **URL:** `/apoyo/id/t-delete/`
 - **Vista:** `ApoyoTestigoDeleteView`
 - **Descripción:** Permite eliminar un apoyo de testigo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Estado de Apoyo
-- **URL:** `/apoyo/<int:pk>/estado-update/`
+- **URL:** `/apoyo/id/estado-update/`
 - **Vista:** `ApoyoEstadoUpdateView`
 - **Descripción:** Permite actualizar el estado de un apoyo existente.
 - **Acceso:** Requiere inicio de sesión.
@@ -312,19 +312,19 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Detalle de Equipo
-- **URL:** `/equipo/<int:pk>/`
+- **URL:** `/equipo/id/`
 - **Vista:** `EquipoDetailView`
 - **Descripción:** Muestra los detalles de un equipo.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Actualizar Equipo
-- **URL:** `/equipo/<int:pk>/update/`
+- **URL:** `/equipo/id/update/`
 - **Vista:** `EquipoUpdateView`
 - **Descripción:** Permite actualizar los detalles de un equipo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
 ### Eliminar Equipo
-- **URL:** `/equipo/<int:pk>/delete/`
+- **URL:** `/equipo/id/delete/`
 - **Vista:** `EquipoDeleteView`
 - **Descripción:** Permite eliminar un equipo existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
