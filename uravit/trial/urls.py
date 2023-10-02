@@ -3,11 +3,11 @@ from . import views
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-
 app_name = 'trial'
 
 urlpatterns = [
     path('', login_required(views.ApoyoListView.as_view()), name='home'),
+    
     # Juicio CRUD
     path('juicio/', staff_member_required(views.JuicioListView.as_view()), name='juicio-list'),
     path('juicio/create/', staff_member_required(views.JuicioCreateView.as_view()), name='juicio-create'),
@@ -33,7 +33,6 @@ urlpatterns = [
     path('perito/<int:pk>/update/', staff_member_required(views.PeritoUpdateView.as_view()), name='perito-update'),
     path('perito/<int:pk>/delete/', staff_member_required(views.PeritoDeleteView.as_view()), name='perito-delete'),
 
-
     # Perfil CRUD
     path('perfil/create/', staff_member_required(views.PerfilCreateView.as_view()), name='perfil-create'),
     path('perfil/', staff_member_required(views.PerfilListView.as_view()), name='perfil-list'),
@@ -53,6 +52,7 @@ urlpatterns = [
     path('apoyo/<int:pk>/v-delete/', staff_member_required(views.ApoyoVictimaDeleteView.as_view()), name='apoyo-victima-delete'),
     path('apoyo/<int:pk>/t-delete/', staff_member_required(views.ApoyoTestigoDeleteView.as_view()), name='apoyo-testigo-delete'),
     path('apoyo/<int:pk>/estado-update/', login_required(views.ApoyoEstadoUpdateView.as_view()), name='apoyo-estado-update'),
+
     # Mi Perfil
     path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),
 
@@ -62,5 +62,4 @@ urlpatterns = [
     path('equipo/<int:pk>/', staff_member_required(views.EquipoDetailView.as_view()), name='equipo-detail'),
     path('equipo/<int:pk>/update/', staff_member_required(views.EquipoUpdateView.as_view()), name='equipo-update'),
     path('equipo/<int:pk>/delete/', staff_member_required(views.EquipoDeleteView.as_view()), name='equipo-delete'),
-
 ]
