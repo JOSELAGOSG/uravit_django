@@ -62,11 +62,13 @@
 
   <!-- Botones para editar y eliminar -->
   <div class="mt-3">
+    {% if user.is_staff %}
     <a href="{% url 'trial:apoyo-update' apoyo.pk %}" class="btn btn-primary">Editar Apoyo</a>
     {% if apoyo.victima %}
     <a href="{% url 'trial:apoyo-victima-delete' apoyo.pk %}" class="btn btn-danger">Eliminar Apoyo</a>
     {% elif apoyo.testigo %}
     <a href="{% url 'trial:apoyo-testigo-delete' apoyo.pk %}" class="btn btn-danger">Eliminar Apoyo</a>
+    {% endif %}
     {% endif %}
   </div>
 
