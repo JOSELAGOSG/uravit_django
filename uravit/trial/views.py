@@ -16,6 +16,14 @@ from django.utils.decorators import method_decorator
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.defaults import permission_denied
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'trial/user/user_form.html'
+    success_url = reverse_lazy('trial:home')
+
+
 
 # JUICIO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#juicio-crud
 

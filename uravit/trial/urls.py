@@ -7,6 +7,7 @@ app_name = 'trial'
 
 urlpatterns = [
     path('', login_required(views.ApoyoListView.as_view()), name='home'),
+    path('user/create/', staff_member_required(views.UserCreateView.as_view()), name='user-create'),
     
     # Juicio CRUD
     path('juicio/', staff_member_required(views.JuicioListView.as_view()), name='juicio-list'),
