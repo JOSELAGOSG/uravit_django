@@ -4,10 +4,20 @@ En un entorno de producción, existen varios comandos de Django que son fundamen
 
 ## 1. `python manage.py migrate`
 
-El comando `migrate` se utiliza para aplicar las migraciones de base de datos que se crearon en desarrollo. Esto asegura que la estructura de la base de datos esté actualizada con las definiciones de modelo más recientes. Ejemplo:
+El comando `migrate` es esencial en producción. Se utiliza para aplicar las migraciones de base de datos que se crearon en desarrollo. Esto asegura que la estructura de la base de datos esté actualizada con las definiciones de modelo más recientes.
 
-```bash
-python manage.py migrate
+
+## 2. `python manage.py collectstatic`
+
+El comando `collectstatic` se utiliza para recopilar archivos estáticos de todas las aplicaciones de tu proyecto Django en un solo directorio. Los archivos estáticos, como CSS, JavaScript e imágenes, se pueden servir de manera eficiente en producción.
+
+
+## 3. `python manage.py createsuperuser`
+
+Para administrar tu aplicación en producción, puedes utilizar `createsuperuser` para crear un superusuario con privilegios de administración. Esto te permite acceder al panel de administración de Django y gestionar datos de forma eficiente.
+
+
+
 
 
 
