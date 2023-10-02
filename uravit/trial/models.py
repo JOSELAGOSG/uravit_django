@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-# Create your models here.
 
 class Juicio(models.Model):
     ruc = models.CharField(max_length=25)
