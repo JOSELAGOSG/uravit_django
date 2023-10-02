@@ -1,3 +1,16 @@
+# Comandos de Django
+
+En un entorno de producción, existen varios comandos de Django que son fundamentales para administrar y mantener una aplicación web. A continuación, se describen algunos de los comandos más utilizados:
+
+## 1. `python manage.py migrate`
+
+El comando `migrate` se utiliza para aplicar las migraciones de base de datos que se crearon en desarrollo. Esto asegura que la estructura de la base de datos esté actualizada con las definiciones de modelo más recientes. Ejemplo:
+
+```bash
+python manage.py migrate
+
+
+
 # Modelos de la Aplicación de Juicios
 
 A continuación se describen los modelos de datos utilizados en la aplicación de juicios:
