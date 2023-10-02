@@ -94,3 +94,237 @@ Campos adicionales relacionados con el tipo de apoyo:
 **Métodos:**
 - `clean()`: Verifica que un apoyo no esté relacionado tanto con una víctima como con un testigo al mismo tiempo.
 - `get_absolute_url()`: Retorna la URL absoluta para ver detalles del apoyo.
+
+# URLs de la Aplicación de Juicios
+
+A continuación se presentan las URLs utilizadas en la aplicación de juicios:
+
+## Juicio CRUD
+
+### Lista de Juicios
+- **URL:** `/juicio/`
+- **Vista:** `JuicioListView`
+- **Descripción:** Muestra una lista de todos los juicios.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Crear Juicio
+- **URL:** `/juicio/create/`
+- **Vista:** `JuicioCreateView`
+- **Descripción:** Permite crear un nuevo juicio.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Detalle de Juicio
+- **URL:** `/juicio/<int:pk>/`
+- **Vista:** `JuicioDetailView`
+- **Descripción:** Muestra los detalles de un juicio.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Juicio
+- **URL:** `/juicio/<int:pk>/update/`
+- **Vista:** `JuicioUpdateView`
+- **Descripción:** Permite actualizar un juicio existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Juicio
+- **URL:** `/juicio/<int:pk>/delete/`
+- **Vista:** `JuicioDeleteView`
+- **Descripción:** Permite eliminar un juicio existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Victima CRUD
+
+### Crear Víctima
+- **URL:** `/juicio/<int:juicio_pk>/create-victima/`
+- **Vista:** `VictimaCreateView`
+- **Descripción:** Permite crear una nueva víctima relacionada con un juicio.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Detalle de Víctima
+- **URL:** `/victima/<int:pk>/`
+- **Vista:** `VictimaDetailView`
+- **Descripción:** Muestra los detalles de una víctima.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Víctima
+- **URL:** `/victima/<int:pk>/update/`
+- **Vista:** `VictimaUpdateView`
+- **Descripción:** Permite actualizar los detalles de una víctima existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Víctima
+- **URL:** `/victima/<int:pk>/delete/`
+- **Vista:** `VictimaDeleteView`
+- **Descripción:** Permite eliminar una víctima existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Testigo CRUD
+
+### Crear Testigo
+- **URL:** `/juicio/<int:juicio_pk>/create-testigo/`
+- **Vista:** `TestigoCreateView`
+- **Descripción:** Permite crear un nuevo testigo relacionado con un juicio.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Detalle de Testigo
+- **URL:** `/testigo/<int:pk>/`
+- **Vista:** `TestigoDetailView`
+- **Descripción:** Muestra los detalles de un testigo.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Testigo
+- **URL:** `/testigo/<int:pk>/update/`
+- **Vista:** `TestigoUpdateView`
+- **Descripción:** Permite actualizar los detalles de un testigo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Testigo
+- **URL:** `/testigo/<int:pk>/delete/`
+- **Vista:** `TestigoDeleteView`
+- **Descripción:** Permite eliminar un testigo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Perito CRUD
+
+### Crear Perito
+- **URL:** `/juicio/<int:juicio_pk>/create-perito/`
+- **Vista:** `PeritoCreateView`
+- **Descripción:** Permite crear un nuevo perito relacionado con un juicio.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Detalle de Perito
+- **URL:** `/perito/<int:pk>/`
+- **Vista:** `PeritoDetailView`
+- **Descripción:** Muestra los detalles de un perito.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Perito
+- **URL:** `/perito/<int:pk>/update/`
+- **Vista:** `PeritoUpdateView`
+- **Descripción:** Permite actualizar los detalles de un perito existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Perito
+- **URL:** `/perito/<int:pk>/delete/`
+- **Vista:** `PeritoDeleteView`
+- **Descripción:** Permite eliminar un perito existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Perfil CRUD
+
+### Crear Perfil
+- **URL:** `/perfil/create/`
+- **Vista:** `PerfilCreateView`
+- **Descripción:** Permite crear un nuevo perfil.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Lista de Perfiles
+- **URL:** `/perfil/`
+- **Vista:** `PerfilListView`
+- **Descripción:** Muestra una lista de todos los perfiles.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Perfil
+- **URL:** `/perfil/<int:pk>/update/`
+- **Vista:** `PerfilUpdateView`
+- **Descripción:** Permite actualizar los detalles de un perfil existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Perfil
+- **URL:** `/perfil/<int:pk>/delete/`
+- **Vista:** `PerfilDeleteView`
+- **Descripción:** Permite eliminar un perfil existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Apoyo Victima Create
+
+### Crear Apoyo para Víctima
+- **URL:** `/victima/<int:victima_pk>/create-apoyo/`
+- **Vista:** `ApoyoVictimaCreateView`
+- **Descripción:** Permite crear un nuevo apoyo para una víctima.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Apoyo Testigo Create
+
+### Crear Apoyo para Testigo
+- **URL:** `/testigo/<int:testigo_pk>/create-apoyo/`
+- **Vista:** `ApoyoTestigoCreateView`
+- **Descripción:** Permite crear un nuevo apoyo para un testigo.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+## Apoyo
+
+### Lista de Apoyos
+- **URL:** `/apoyo/`
+- **Vista:** `ApoyoListView`
+- **Descripción:** Muestra una lista de todos los apoyos.
+- **Acceso:** Requiere inicio de sesión.
+
+### Detalle de Apoyo
+- **URL:** `/apoyo/<int:pk>/`
+- **Vista:** `ApoyoDetailView`
+- **Descripción:** Muestra los detalles de un apoyo.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Apoyo
+- **URL:** `/apoyo/<int:pk>/update/`
+- **Vista:** `ApoyoUpdateView`
+- **Descripción:** Permite actualizar los detalles de un apoyo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Apoyo de Víctima
+- **URL:** `/apoyo/<int:pk>/v-delete/`
+- **Vista:** `ApoyoVictimaDeleteView`
+- **Descripción:** Permite eliminar un apoyo de víctima existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Apoyo de Testigo
+- **URL:** `/apoyo/<int:pk>/t-delete/`
+- **Vista:** `ApoyoTestigoDeleteView`
+- **Descripción:** Permite eliminar un apoyo de testigo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Estado de Apoyo
+- **URL:** `/apoyo/<int:pk>/estado-update/`
+- **Vista:** `ApoyoEstadoUpdateView`
+- **Descripción:** Permite actualizar el estado de un apoyo existente.
+- **Acceso:** Requiere inicio de sesión.
+
+## Mi Perfil
+
+### Detalle de Mi Perfil
+- **URL:** `/mi-perfil/`
+- **Vista:** `UserPerfilView`
+- **Descripción:** Muestra los detalles de tu perfil de usuario.
+- **Acceso:** Requiere inicio de sesión.
+
+## Equipo CRUD
+
+### Lista de Equipos
+- **URL:** `/equipo/`
+- **Vista:** `EquipoListView`
+- **Descripción:** Muestra una lista de todos los equipos.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Crear Equipo
+- **URL:** `/equipo/create/`
+- **Vista:** `EquipoCreateView`
+- **Descripción:** Permite crear un nuevo equipo.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Detalle de Equipo
+- **URL:** `/equipo/<int:pk>/`
+- **Vista:** `EquipoDetailView`
+- **Descripción:** Muestra los detalles de un equipo.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Actualizar Equipo
+- **URL:** `/equipo/<int:pk>/update/`
+- **Vista:** `EquipoUpdateView`
+- **Descripción:** Permite actualizar los detalles de un equipo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
+
+### Eliminar Equipo
+- **URL:** `/equipo/<int:pk>/delete/`
+- **Vista:** `EquipoDeleteView`
+- **Descripción:** Permite eliminar un equipo existente.
+- **Acceso:** Requiere inicio de sesión de personal con permisos.
