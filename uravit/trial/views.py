@@ -17,7 +17,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.views.defaults import permission_denied
 from django.contrib.auth.mixins import UserPassesTestMixin
 
-# Juicio Views
+# JUICIO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#juicio-crud
 
 class JuicioCreateView(CreateView):
     template_name = 'trial/juicio/juicio_form.html'
@@ -45,12 +45,7 @@ class JuicioDeleteView(DeleteView):
     context_object_name = 'juicio'
     success_url = reverse_lazy('trial:juicio-list')
 
-# TESTIGO Views
-
-class TestigoDetailView(DetailView):
-    template_name = 'trial/testigo/testigo_detail.html'
-    model = Testigo
-    context_object_name = 'testigo'
+# TESTIGO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#testigo-crud
 
 class TestigoCreateView(CreateView):
     template_name = 'trial/testigo/testigo_form.html'
@@ -63,6 +58,11 @@ class TestigoCreateView(CreateView):
         self.object.juicio = juicio
         self.object.save()
         return redirect(self.object.juicio.get_absolute_url())
+    
+class TestigoDetailView(DetailView):
+    template_name = 'trial/testigo/testigo_detail.html'
+    model = Testigo
+    context_object_name = 'testigo'
 
 class TestigoUpdateView(UpdateView):
     template_name = 'trial/testigo/testigo_form.html'
@@ -79,7 +79,7 @@ class TestigoDeleteView(DeleteView):
         juicio_pk = testigo.juicio.pk
         return reverse_lazy('trial:juicio-detail', kwargs={'pk': juicio_pk})
 
-# VICTIMA Views
+# VÍCTIMA Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#v%C3%ADctima-crud
 
 class VictimaDetailView(DetailView):
     template_name = 'trial/victima/victima_detail.html'
@@ -113,7 +113,7 @@ class VictimaDeleteView(DeleteView):
         juicio_pk = victima.juicio.pk
         return reverse_lazy('trial:juicio-detail', kwargs={'pk': juicio_pk})
 
-# PERITO Views
+# PERITO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#perito-crud
 
 class PeritoDetailView(DetailView):
     template_name = 'trial/perito/perito_detail.html'
@@ -147,7 +147,7 @@ class PeritoDeleteView(DeleteView):
         juicio_pk = perito.juicio.pk
         return reverse_lazy('trial:juicio-detail', kwargs={'pk': juicio_pk})
 
-# Perfil CRUD
+# PERFIL Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#perfil-crud
 
 class PerfilCreateView(CreateView):
     template_name = 'trial/perfil/perfil_form.html'
@@ -172,7 +172,7 @@ class PerfilDeleteView(DeleteView):
     context_object_name = 'perfil'
     success_url = reverse_lazy('trial:perfil-list')
 
-# Apoyo CRUD
+# APOYO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#apoyo
 
 class ApoyoVictimaCreateView(CreateView):
     template_name = 'trial/apoyo/apoyo_form.html'
@@ -279,7 +279,6 @@ class ApoyoEstadoUpdateView(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         apoyo = self.get_object()
-
         try:
             perfil = self.request.user.perfil
         except Exception:
@@ -307,7 +306,7 @@ class ApoyoTestigoDeleteView(DeleteView):
         testigo_pk = apoyo.testigo.pk
         return reverse_lazy('trial:testigo-detail', kwargs={'pk': testigo_pk})
 
-# Mi Perfil Detail
+# Mi Perfil Detail ** Documentación: https://github.com/JOSELAGOSG/uravit_django#mi-perfil
 @method_decorator(login_required, name='dispatch')
 class UserPerfilView(TemplateView):
     template_name = 'trial/user/user_detail.html'
@@ -327,7 +326,7 @@ class UserPerfilView(TemplateView):
 
         return context
 
-# Equipo CRUD
+# EQUIPO Views ** Documentación: https://github.com/JOSELAGOSG/uravit_django#equipo-crud
 class EquipoCreateView(CreateView):
     template_name = 'trial/equipo/equipo_form.html'
     model = Equipo

@@ -235,7 +235,8 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Descripción:** Permite eliminar un perfil existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
-## Apoyo Victima Create
+
+## Apoyo
 
 ### Crear Apoyo para Víctima
 - **URL:** `/victima/id/create-apoyo/`
@@ -243,15 +244,11 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Descripción:** Permite crear un nuevo apoyo para una víctima.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
-## Apoyo Testigo Create
-
 ### Crear Apoyo para Testigo
 - **URL:** `/testigo/id/create-apoyo/`
 - **Vista:** `ApoyoTestigoCreateView`
 - **Descripción:** Permite crear un nuevo apoyo para un testigo.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
-
-## Apoyo
 
 ### Lista de Apoyos
 - **URL:** `/apoyo/`
