@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.defaults import permission_denied
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 # Juicio Views
 
@@ -271,10 +272,20 @@ class ApoyoUpdateView(UpdateView):
         'traductor_idioma'
     ]
 
-class ApoyoEstadoUpdateView(UpdateView):
+class ApoyoEstadoUpdateView(UserPassesTestMixin, UpdateView):
     template_name = 'trial/apoyo/apoyo_estado_update.html'
     model = Apoyo
     fields = ['estado']
+
+    def test_func(self):
+        apoyo = self.get_object()
+
+        try:
+            perfil = self.request.user.perfil
+        except Exception:
+            return self.request.user.is_staff
+
+        return self.request.user.is_staff or perfil.equipo == apoyo.equipo_a_cargo
 
 class ApoyoVictimaDeleteView(DeleteView):
     template_name = 'trial/apoyo/apoyo_confirm_delete.html'

@@ -51,7 +51,7 @@ urlpatterns = [
     path('apoyo/<int:pk>/update/', staff_member_required(views.ApoyoUpdateView.as_view()), name='apoyo-update'),
     path('apoyo/<int:pk>/v-delete/', staff_member_required(views.ApoyoVictimaDeleteView.as_view()), name='apoyo-victima-delete'),
     path('apoyo/<int:pk>/t-delete/', staff_member_required(views.ApoyoTestigoDeleteView.as_view()), name='apoyo-testigo-delete'),
-    path('apoyo/<int:pk>/estado-update/', login_required(views.ApoyoEstadoUpdateView.as_view()), name='apoyo-estado-update'),
+    path('apoyo/<int:pk>/estado-update/', views.ApoyoEstadoUpdateView.as_view(), name='apoyo-estado-update'),
 
     # Mi Perfil
     path('mi-perfil/', login_required(views.UserPerfilView.as_view()), name='user-perfil'),

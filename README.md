@@ -131,10 +131,10 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **Descripción:** Permite eliminar un juicio existente.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
 
-## Victima CRUD
+## Víctima CRUD
 
 ### Crear Víctima
-- **URL:** `/juicio/<int:juicio_pk>/create-victima/`
+- **URL:** `/juicio/id/create-victima/`
 - **Vista:** `VictimaCreateView`
 - **Descripción:** Permite crear una nueva víctima relacionada con un juicio.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -160,7 +160,7 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 ## Testigo CRUD
 
 ### Crear Testigo
-- **URL:** `/juicio/<int:juicio_pk>/create-testigo/`
+- **URL:** `/juicio/id/create-testigo/`
 - **Vista:** `TestigoCreateView`
 - **Descripción:** Permite crear un nuevo testigo relacionado con un juicio.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -186,7 +186,7 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 ## Perito CRUD
 
 ### Crear Perito
-- **URL:** `/juicio/<int:juicio_pk>/create-perito/`
+- **URL:** `/juicio/id/create-perito/`
 - **Vista:** `PeritoCreateView`
 - **Descripción:** Permite crear un nuevo perito relacionado con un juicio.
 - **Acceso:** Requiere inicio de sesión de personal tipo "staff".
@@ -287,7 +287,7 @@ A continuación se presentan las URLs utilizadas en la aplicación de juicios:
 - **URL:** `/apoyo/id/estado-update/`
 - **Vista:** `ApoyoEstadoUpdateView`
 - **Descripción:** Permite actualizar el estado de un apoyo existente.
-- **Acceso:** Requiere inicio de sesión.
+- **Acceso:** Requiere inicio de sesión de personal tipo "staff" o que el usuario pertenezca al equipo que está a cargo del apoyo.
 
 ## Mi Perfil
 
