@@ -1,3 +1,10 @@
+# Diagrama Relacional
+
+![Logo de Markdown](diagrama-relacional-app-juicios.jpeg)
+
+
+
+
 # Comandos de Django
 
 En un entorno de producción, existen varios comandos de Django que son fundamentales para administrar y mantener una aplicación web. A continuación, se describen algunos de los comandos más utilizados:
