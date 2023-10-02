@@ -4,7 +4,7 @@ A continuación se describen los modelos de datos utilizados en la aplicación d
 
 ## Modelo `Juicio`
 - **ruc**: Un campo de caracteres que almacena el RUC del juicio.
-- **auto_apertura**: Un campo de caracteres opcional para almacenar el auto de apertura.
+- **auto_apertura**: Un campo de caracteres opcional para almacenar el auto apertura.
 - **fecha_juicio_oral**: Un campo de fecha y hora que representa la fecha del juicio oral.
 - **fiscal**: Un campo de caracteres opcional para almacenar el nombre del fiscal encargado.
 
