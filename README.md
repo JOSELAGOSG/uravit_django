@@ -61,4 +61,36 @@ A continuación se describen los modelos de datos utilizados en la aplicación d
 - `get_update_url()`: Retorna la URL absoluta para actualizar el perito.
 - `get_delete_url()`: Retorna la URL absoluta para eliminar el perito.
 
-## Resto de los Modelos...
+## Modelo `Equipo`
+- **nombre**: Un campo de caracteres que almacena el nombre del equipo.
+
+**Métodos:**
+- `__str__()`: Retorna el nombre del equipo como representación de cadena.
+- `get_absolute_url()`: Retorna la URL absoluta para ver detalles del equipo.
+
+## Modelo `Perfil`
+- **usuario**: Una clave externa que relaciona el perfil con un usuario.
+- **equipo**: Una clave externa que relaciona el perfil con un equipo.
+
+**Métodos:**
+- `get_update_url()`: Retorna la URL absoluta para actualizar el perfil.
+- `get_delete_url()`: Retorna la URL absoluta para eliminar el perfil.
+
+## Modelo `Apoyo`
+- **tipo**: Un campo de elección que indica el tipo de apoyo (traslado, estadía, alimentación, etc.).
+- **victima**: Una clave externa que relaciona el apoyo con una víctima (opcional).
+- **testigo**: Una clave externa que relaciona el apoyo con un testigo (opcional).
+- **equipo_a_cargo**: Una clave externa que relaciona el apoyo con un equipo.
+- **estado**: Un campo de elección que indica el estado del apoyo (solicitado, en coordinación, ejecutado).
+- **descripcion**: Un campo de texto opcional para describir el apoyo en detalle.
+
+Campos adicionales relacionados con el tipo de apoyo:
+- **traslado_tipo**: Tipo de traslado (local, otra región).
+- **traslado_vehiculo**: Tipo de vehículo para el traslado.
+- **estadia_con_alimentacion**: Indica si la estadía incluye alimentación.
+- **asistencia_medica_tipo**: Tipo de asistencia médica (psiquiátrica, psicológica, otro).
+- **traductor_idioma**: Idioma para el servicio de traductor.
+
+**Métodos:**
+- `clean()`: Verifica que un apoyo no esté relacionado tanto con una víctima como con un testigo al mismo tiempo.
+- `get_absolute_url()`: Retorna la URL absoluta para ver detalles del apoyo.
