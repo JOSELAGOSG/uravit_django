@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
+# ** Documentación: https://github.com/JOSELAGOSG/uravit_django#modelos-de-la-aplicaci%C3%B3n-de-juicios
 
 class Juicio(models.Model):
     ruc = models.CharField(max_length=25)
